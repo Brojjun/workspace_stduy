@@ -1,0 +1,45 @@
+Tag = <태그명>
+->시작태그와 종료태그가 있다. <h2>   </h2>
+
+Element = <h2>Element(내용)</h2>
+->태그 사이의 내용을 의미
+
+Attribute = 특정 시작 태그에서 "값"
+-> <div id="a"> < /div>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta>
+<title>
+
+
+<body>
+<h1~h6>
+<p> 단락형태
+<ul> <li> -> 인라인(크기지정불가), 블럭, 인라인블럭
+<ol> <li>
+<br> ->\n
+<div>블럭으로 영역 잡을 때 / <span>인라인으로 영역 잡을 때 
+&lt; &gt; &alp;
+<img> scr, title, alt, strong(중요하다는 의미), b(글자만 굵게)
+<a> href (www.naver.com , # )
+<input> : button,submit, reset(button 대채 가능 -> submit deafult), file, text, password, checkbox, radio, , hidden
+<table> - thead, tbody, tfoot - tr - th, td  // colspan, rowspan
+<form> : 사용자의 입력을 묶어줌
+<select> : option
+<video> / <audio>
+
+
+
+
+
+
+<h> : block
+<input> : button, file, text, password, checkbox, radio, submit, reset, hidden
+
+
+
+
+

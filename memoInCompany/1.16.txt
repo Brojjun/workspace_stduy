@@ -1,0 +1,101 @@
+오버플로우 조심 int_max + 1 = int_min {
+
+0111111111 
++000000001
+= 1000000000
+}
+
+실수의 연산은 부정확하다 {
+float f1 = 2.0f - 1.1f = 0.9;
+
+double d1 = 2.0 - 1.1 = 0.8999999999;
+}
+
+
+
+형변환{
+기본형(primitive)는 기본형끼리 / 참조형(reference)는 참조형끼리
+but boolean은 호환X
+
+기본형을 참조형으로 형변환하기 위해서는 Wrapper 클래스 필요
+ex) int result = (int)d;
+}
+
+
+묵시적 형변환과 명시적 형변환 extend 형변환{
+묵시적 형변환 : 작은 타입에서 큰 타입으로 형변환할때 JVM이 해줌
+명시적 형변환 : 개발자 책임지고 ㄱ () 같은거
+
+short a = int b;
+이건 묵시적에 해당x so 컴파일오류남
+}
+
+//unsinged키워드는 없지만 . char 형은 기본적으로 unsinged이다.
+
+예시 코드 {
+int i1 = max;
+int i2 = max+1;
+i2 -> 오버플로우
+
+long l1 = i1+1;
+l1 -> 오버플로우 // i1+1의 과정이 int이기 때문에 
+
+long l3 = (long)i1 + 1; //문제 없음
+
+int i3 = 1000000 * 1000000 / 1000000 => 오버플로우
+int i4 = 10000000 / 100000 * 100000 -> 문제없음
+}
+
+| 와 || {
+|는 앞에가 true여도 뒤에껏도 연산 진행
+||는 앞에만 진행
+
+}
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡonlineㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+패키지 : 소문자
+클래스 : 첫글자 대문자
+변수 : 첫글자 소문자 + 낙타
+상수 : 올 대문자
+매소드 : 첫글자 소문자
+->
+클래스  2+1 (매개변수도 포함)
+변수     4+2(out, args)
+매소드  1+1(main 포함, )
+상수 : 2
+->
+public static void main(String[] args){
+int i = 100;
+int j = 200;
+int minData = Integer.MAX_VALUE;
+int maxData = Integer.MIN_VALUE;
+System.out.println(minData);
+}
+
+
+
+==키워드는 주소값을 비교하는 연산자이다. 그래서 밑에 코드에서 A와 B는 서로 다르다.
+->정말 찐 객체지향인 것이 느껴진다. 객채를 서로 비교하는 의미에서 ==연산자는 같은 객채인지를 표기하기 위해 주소값을 비교하는 것으로 보인다.
+->생각해보면 String은 객채이기 때문에 주소를 저장하는 변수를 가지고 있고 그러면 주소값을 비교하는게 맞다.
+-> 결국 8대 기본연산자를 제외하고는 주소를 비교하는게 맞는 듯.
+
+
+
+		//exam01();
+		String A = "java";
+		String B = new String("java");
+		if(A==B)
+			System.out.print("java");
+		if(A!=B)
+			System.out.print("c++");
+	}
+
+
+String buffer와 StringBulider의 차이
+
+String buffer=> 동기화 
+
+StringBulider=> 비동기화
+
+
+

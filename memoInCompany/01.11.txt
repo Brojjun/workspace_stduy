@@ -1,0 +1,49 @@
+1. 환경변수설정
+2. JAVA, 이클립스 설치
+3. UTF-8	
+4. 이클립스 0> perspective -> java 프로젝트 생성	
+5. UTF 설정 3가지 방법  -> 1. 소스 폴더 변경 2. workspace 설정 변경 3. 이클립스 설정 변경
+
+ctrl n - > class 만들기
+ctrl m - > 옆에 탭창 치우기
+crtl space 자동완성 키기
+crtl f11 실행
+ctrl art -> 자동 복사
+art 아래 -> 내용 내리기
+
+스위치 문
+		 * 1.4버전까진  : int로 형변환이 가능한 것들(byte, short, char, int)
+		 * 1.5버전 이후 : enum 추가
+		 * 1.7버전 이후 : String
+
+
+crtl + space + enter (main)		
+
+자바 배열 선언 3가지 방법
+		int[] arr = new int[4];
+		int[] arr = {1,10,20};
+		int[] arr = new int[]{1,10,20};
+
+2중 배열
+		int[]a1 = new int[10];
+		int[]a2 = {5,6,7};
+		int[]a3 = {9,10};
+		int[][] arr = {a1,a2,a3};
+
+->
+자바의 이중배열은 c의 배열에 리스트를 결합한 형태
+
+
+빙고게임 만들기 (컴퓨터와)
+
+난수 생성 함수
+
+숫자뽑기 함수
+
+컴퓨터 숫자 우선순위 지정
+
+판에서 숫자 삭제
+
+빙고 check
+
+게임 승리	
