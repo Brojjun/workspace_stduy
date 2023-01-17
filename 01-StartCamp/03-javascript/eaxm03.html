@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <title>Document</title>
+
+    <h2>DOM 이벤트 연습하기</h2>
+    
+    <div>
+       
+     <button id="addBtn" onclick="addDiv()">
+            추가
+        </button>
+    </div>
+
+    <div id="result">
+        <div>추가 되었음</div>
+    </div>
+
+    <script>
+        let addE1= document.querySelector("#addBtn");
+        console.dir(addE1);
+
+        function addDiv(){
+            alert(1);
+        }
+    </script>
+
+</body>
+</html>

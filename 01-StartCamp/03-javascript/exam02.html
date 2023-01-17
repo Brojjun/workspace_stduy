@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        let msg = "내 이름은 코난. 탐정이죠";
+        msg = '사실 탐정이 아닙니다.';
+        msg = "'맵고' 짜고 단거~";
+        msg = ' "달고" 짜고 매운거 ~';
+
+        let name = "코난";
+        msg = "이름은"+name + "탑정입니다.";
+        // es6에서 제공 : (템플릿 문자열) : '문자열 ${변수}'
+        msg = `내 이름은 ${name} 탐정이죠~`;
+        console.log(msg);
+        */
+        let member_info = "";
+        /*
+            let member_info += "<table>";
+            let member_info += "    <tr>";
+            let member_info += "        <td>이름</td>";
+            let member_info += "        <td>나이</td>";
+            let member_info += "    </tr>";
+            let member_info += "    <tr>";
+            let member_info += "        <td>${name}</td>";
+            let member_info += "        <td>${age}</td>";
+            let member_info += "    </tr>";
+            let member_info += "</table>";
+*/
+            let name = "코난";
+            let age = 10;
+            member_info = `<table>
+                <tr>
+                    <td>이름</td>
+                    <td>나이</td>
+                </tr>
+                <tr>
+                    <td>${name}</td>
+                    <td>${age}</td>
+                </tr>
+            </table>
+        `;
+        console.log(member_info);
+
+
+        </script>
+    </body>
+    
+    </html>

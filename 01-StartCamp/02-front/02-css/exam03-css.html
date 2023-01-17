@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing:border-box;
+        }
+        body{
+
+
+        }
+        .container{
+            width: 1000px;
+            margin:30px auto;
+            background-color: green;
+        }
+        
+        .header, .footer{
+            width:1000px;
+            height: 100px;
+            border:2px solid blue; 
+        }
+
+        .content{
+            width:800px;
+            border:2px solid blue; 
+            min-height: 500px;
+            float:left;
+        }
+
+        .aside{
+            width:200px;
+            min-height: 200px;
+            border:2px solid blue; 
+            float:left;
+        }
+
+        .footer{
+            clear:both;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>float 속성을 이용한 레이아웃 배치하기</h2>
+        <div class="header">헤더</div>
+        <div class="content">내용</div>
+        <div class="aside">옆</div>
+        <div class="footer">바닥</div>
+
+    </div>
+</body>
+</html>

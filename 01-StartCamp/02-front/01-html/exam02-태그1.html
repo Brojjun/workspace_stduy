@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+        style태그는 css임을 알리는 태그
+        개발자 도구 ---는 우선순위에서 밀린다는 표기
+    -->
+    <style>
+        h1 {
+            display: block;
+            font-size: 2em;
+            color: red;
+            margin-block-start: 0.67em;
+            margin-block-end: 0.67em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+    
+<body>
+
+    <!--
+        <br>이나 &같은 것들을 예약어로 미리 정의해둠
+        문자표 
+        &lt; -> (<)
+        &gt; -> (>)
+        &amp; -> (&)
+    -->
+    <p>
+        &lt;br&gt;은 줄넘김 태그입니다.
+    </p>
+
+    <p>
+        &amp;lt;는 &lt;로 변환됩니다.
+    </p>
+    <!--
+        em은 강조하고 싶을 때 -> 검색엔진에서 활용 가능
+        i는 기울이는 모양만 주고 싶을 때
+    -->
+    <p> 오늘 날씨<em> 개좋음</em></p>
+    <p> 오늘 날씨<i> 개좋음</i></p>
+    
+    <!--
+        strong은 강조하고 싶을 때 -> 검색엔진에서 활용 가능
+        b는 기울이는 모양만 주고 싶을 때
+    -->
+    <p> 오늘 날씨<strong> 개좋음</strong></p>
+    <p> 오늘 날씨<b> 개좋음</b></p>
+    
+    
+    <!--
+        h : 글자 크기, 중요도 표시 ( 낮은 숫자가 높은 중요도 )
+        h1 ~ h6 까지 제공
+    -->
+    <h1>H1 Element</h1>
+    <h2>H2 Element</h2>
+    <h3>H3 Element</h3>
+    <h4>H4 Element</h4>
+    <h5>H5 Element</h5>
+    <h6>H6 Element</h6>
+
+    <!--
+       p(paragraph) : 단락형태의 글
+       ->단락의 전후에 빈 줄을 추가
+    -->
+
+    <p>오늘은 까치 식당에서 김치찌개를 먹으러 ㄱㄱ</p>
+    <p>중식은 은소스(간짜장) 또는 짬뽕이는 짬뽕 ㄱㄱ </p>
+    <!--
+        <br>은 줄넘김
+    -->
+    <p>은소스 옆에 보면<br>
+         국수집 있는데 거기 양이 어마어마하다 롯데리아 옆에있음</p>
+
+    
+</body>
+</html>

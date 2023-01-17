@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <title>Document</title>
+
+    <h2>DOM 이벤트 연습하기</h2>
+    
+    <div>
+       
+     <button id="addBtn">
+            추가
+        </button>
+    </div>
+
+    <div id="result">
+        <div>추가 되었음</div>
+    </div>
+
+    <script>
+        let addE1= document.querySelector("#addBtn");
+        console.dir(addBtn);
+        //괄호 빼고 함수 호출하여 함수의 주소를 줌-> return 받지 않고 실행만 함
+       //addE1.onclick = addDiv;
+       // addE1.onclick = addDiv2; // 덮어 쒸우기 
+        //리스터를 사용하면 동시에 함수 2개 쌉가능
+        addE1.addEventListner("click",addDiv);
+        //addE1.addEventListner("click",addDiv2);
+        function addDiv(){
+            document.querySelector("#result").innerHTML += "<div>추가</div>"
+        }
+
+        function addDiv2(){
+            alert(123123);
+        }
+    </script>
+
+</body>
+</html>
