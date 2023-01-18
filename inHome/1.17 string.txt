@@ -1,0 +1,58 @@
+String 관련 매서드
+
+String
+StirngBuffer => 동기화
+StringBuilder => 비동기화
+
+String str1 = "a";
+StringBuffer str2 = new StringBuffer("a");
+StringBuilder str3 = new StringBuilder("a");
+
+str1 += str1.concal("b"); 
+str2.append("b");
+
+char[] arr = str1.toCharArray();
+
+arr.charAt(0);
+
+arr.equalsIgnoreCase("hello");
+
+int a = s.indexOf("llo") //llo가 시작되는 index 반환
+
+s.indexOf("1",a+1); // a뒤에부터 l로 시작하는 index 반환
+
+s.lastIndexOf("1") //뒤에서부터 1을 찾아서 index 반환
+
+boolean find = s.contains("llo"); //있다 없다를 판다.
+
+data = String.valueOf(1320);
+
+data.trim(); // 앞 뒤 공백제거
+
+data = data.replace(" ",""); //중간 공백 제거
+
+s.replaceAll("[0-9]","");
+
+String[] arr = s.split(":");
+
+s = "https://www.naver.com";
+System.out.println(s.startWith("https://")); //시작 문자열이 맞는지 참트루 확인
+
+s = "flower.jpg";
+System.out.println(s.endWith(".jpg));
+
+s = "/myserver/login?id=a&password=b";
+
+String contextpath = "\myserver";
+
+s.substring(contextpath.length()));
+
+
+
+
+
+
+
+
+
+
