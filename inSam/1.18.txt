@@ -20,3 +20,73 @@ super 키워드 -> this처럼 조상 클래스 멤버에 접근
 
 static 키워드는 -> 오버라이딩 불가능 
 ->다만 하이딩 개념으로 선언은 가능
+
+**패키지
+Package 네이밍 룰
+com.sssafy(회사의 identity).htm(프로젝트).common(용도)
+
+import 다른 패키지에 있는 클래스를 사용하기 위함
+	-- java.lang은 기본 import여서 유일하게 import 하지 않아도 됨
+
+import 한 package의 클래스 이름이 동일할 때
+	-> 클래스 이름 앞에 전체 패키지 명 입력 ( java.util.List list = new java.util.ArrayList(); )
+
+패키지 import 방법 2가지
+1. java.util.*
+2. java.util.list .... 다 일일이 
+->너무 많으면 1번... 적으면 2번
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+package com.saffy.day3;
+
+import java.util.*;
+import java.sql.*;
+
+import java.io.*;
+
+public class Test {
+	public static void main(String[] args) {
+		java.util.Date d = new java.util.Date();
+		java.sql.Date e = new java.sql.Date(0);
+		
+		//Date c = new Date(); -> 오류
+		
+		
+	}
+}
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+접근제한자 : 4가지 가능 ( public > protected > default package > private )
+	 * 접근제한자 : 4가지 가능 ( public, protected, private ,default package )  
+	 * 활용제한자 : final, abstarct, static, synchronized
+
+
+형변환에 대하여
+
+class MyRandom Extends Random{}
+
+MyRandom ran1 = new MyRandom();
+Random ran2 = new MyRandom();
+Object ran3 = new MyRandom();
+
+의 차이는 특정 함수의 인자값에 들어갈 수 있냐 없냐? 정도의 차이
+ex ) void add ( Random r )에 들어가기 위해 ran2를 사용
+
++
+
+Random r1 = new MyRandom();
+Random r2 = new Random();
+
+의 차이는 다형성을 보장한다. 
+ex ) void add ( Random r ) 에 두 객체가 들어갔을 경우에 r1은 overriding을 통해 r2와는 다르게 동작한다. 이를 위해 객체의 
+형변환을 사용한다.
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+public class System {
+	public static ??? out;
+}
+class ???{
+	public void println(String v) {}
+}
