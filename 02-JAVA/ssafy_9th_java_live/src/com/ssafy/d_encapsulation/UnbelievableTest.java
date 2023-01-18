@@ -8,7 +8,6 @@ class UnbelievableUserInfo {
     public int account = 10000;
 
     // TODO: name 과 account에 부적절한 값이 할당되지 못하도록 처리하시오.
-    //  name과 account 는 private으로 변경되어야 한다.
     // END:
 }
 

@@ -24,9 +24,6 @@ public class ListTest {
 
     public void retrieveTest() {
         // TODO: 다양한 조회 기능을 사용해보자.
-        //  혹시 비어있지는 않나? 요소의 개수는 ?
-        //  반복을 이용한 요소 순회
-        //  홍길동이 있다면 그 위치 출력
         // END:
     }
 

@@ -1,7 +1,6 @@
 package com.ssafy.g_collection.collection.set;
 
 // TODO: SmartPhone이 다른 SmartPhone과 번호를 기준으로 비교가능하게 처리하시오.
- public class SmartPhone {
     // END:
 
     String number;

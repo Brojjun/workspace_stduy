@@ -16,7 +16,6 @@ public class UseWildCardTest2 {
     }
 
     // TODO:GenericBox<Double>과 GenericBox<Integer>의 내용을 확인하는 메서드를 작성해보자.
-     public void printInfo(Object wild){}
     // END:
 
     public static void main(String[] args) {
