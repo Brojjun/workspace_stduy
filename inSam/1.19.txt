@@ -1,0 +1,33 @@
+싱글톤 : 객체의 생성을 제한
+	-> 객체의 구별이 필요X 
+		=> 수정 가능한 멤변수가 없고 기능만 있음
+		=> stateless한 객체
+	-> 객체의 생성 삭제 비용이 많이 듬
+
+	-> 외부에서 생성자 접근 금지 -> private
+	-> 내부에서 직접 객체 생성 + 멤버 변수이므로 private 설정
+	-> 외부에서 접근 하도록 getter
+	-> 객체 없이 외부에서 접근하도록 getter와 static 추가
+
+	-> 외부에서는 getter을 통해 개게를 참조해서 사용
+
+다형성 : 하나의 객체가 많은 형(타입)을 가질 수 있는 성질
+-> 상속관계에 있을 때 조상 클래스의 타입으로 자식 클래스 객체를 레퍼런스 할 수 있다.
+-> 다른 객체를 담는 배열 생성도 가능 -> Object[] arr = new Object[10];
+
+다형성은 오버라이딩과 클래스 형변환을 이용해 같은 인자로서 다른 기능을 할 수 있게 해주는 성질
+->전부 오버로딩 해줘야 할 것을 상속을 통해서 편하게 사용 가능
+
+Person person = new Person();
+SpiderMan sman = (SpiderMan) person;
+
+->
+if(person instanceof SpiderMan) -> person이 SpiderMan인지 boolean으로 리턴
+실제 메모리에 있는 객체가 특정 클래스 타입인지 확인
+
+
+오버라이딩 + 형변환
+SuperClass super = new SubClass();
+-> 메소드 실행시 오버라이딩 된 SubClass의 메소드 실행 but super.s -> 변수 참조시 super의 변수 참조
+
+

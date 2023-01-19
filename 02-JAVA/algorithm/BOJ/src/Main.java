@@ -1,71 +1,54 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.SynchronousQueue;
+
+/*
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+String[] yxbag = br.readLine().split(" ");
+
+int by = Integer.parseInt(yxbag[0]);
+int bx = Integer.parseInt(yxbag[1]);
+int bag = Integer.parseInt(yxbag[2]);
+
+ */
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		/*
-		 * 시간계산
-		 * 완탐 기준 : 500 * 500 * 256
-		 * 6400만->가능
-		 * 시간초과
-		 * 최적화... 어디까지...
-		 * 이진탐색인가?
-		 */
-		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String[] yxbag = br.readLine().split(" ");
-		int by = Integer.parseInt(yxbag[0]);
-		int bx = Integer.parseInt(yxbag[1]);
-		int bag = Integer.parseInt(yxbag[2]);
-		
-		int[][] map = new int[by][bx];
-		
-		int startPoint = Integer.MAX_VALUE;
-		int endPoint = Integer.MIN_VALUE;
-		
-		for(int y = 0; y < by; y++) {
-			String[] xmap = br.readLine().split(" ");
-			for(int x = 0; x < bx; x++) { 
-			map[y][x] = Integer.parseInt(xmap[x]);
-			startPoint = Math.min(startPoint, map[y][x]);
-			endPoint = Math.max(endPoint, map[y][x]);
-			}
-		}
-		
-		int min_time = Integer.MAX_VALUE;
-		int height = 0;
 	
 		
-		for(int t = startPoint; t <= endPoint; t++) {
-			int virtual_bag = bag;
-			int time = 0;
-			
-			for(int y = 0; y < by; y++) {
-				for(int x = 0; x < bx; x++) {
-					int immTime = Math.abs(map[y][x] - t);
-					//땅파기
-					if(map[y][x] > t) {
-						time += immTime * 2;
-						virtual_bag += immTime;
-					}						
-					//땅쌓기
-					else {
-						time += immTime;
-						virtual_bag -= immTime;
-					}
-				}
-			}
-			if(virtual_bag >= 0 && min_time >= time) {
-				min_time = time;
-				height = t;
-			}
-			else 
-				break;
+		int n = Integer.parseInt(br.readLine());
+		ArrayList<String> book = new ArrayList<String>();
+		
+		for(int i = 0; i < n;i++) {
+			String word = br.readLine();
+			book.add(word);
 		}
-		System.out.println(min_time+" "+height);
-}
+		Collections.sort(book);
+		
+		String[][] arr = new String[51][20000];
+		int[] size = new int[51];
+		while(!book.isEmpty()) {
+			String word = book.get(0);
+			arr[word.length()][size[word.length()]++] = word;
+			book.remove(0);
+		}
+		
+		for(int i = 0; i < 51; i++) {
+			String words = "";
+			for(int j = 0; j < size[i]; j++) {
+				if(words.equals(arr[i][j]))
+					continue;
+				words = arr[i][j];
+				System.out.println(arr[i][j]);
+
+			}
+			
+		}
+	}
 }
