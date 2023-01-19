@@ -7,30 +7,40 @@ import java.io.InputStreamReader;
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 String[] yxbag = br.readLine().split(" ");
 
-int by = Integer.parseInt(yxbag[0]);
-int bx = Integer.parseInt(yxbag[1]);
-int bag = Integer.parseInt(yxbag[2]);
-
  */
 
 public class Main {
 	public static void main(String[] args) throws Exception {
+		//input
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+		String[] number = br.readLine().split(" ");
+	
+		//입력이 무조건 8개이기 때문에 동적으로 짤 필요가 없어보임
+		//-> 정적으로 첫번째 값 1,8구분하고 1씩 증감만 검사하면 될듯
 		
-		long a1 = Integer.parseInt(br.readLine());
-		long a2 = Integer.parseInt(br.readLine());
-		long a3 = Integer.parseInt(br.readLine());
-		
-		
-		long a4 = a1 * a2 * a3;
-		int[] numberMap = new int[10];
-		while(a4 > 0) {
-			int a = (int) a4 % 10;
-			numberMap[a]++;
-			a /= 10;
+		//증가
+		if(number[0].equals("1")) {	
+			for(int i = 0; i < 8; i++) {
+				if(Integer.parseInt(number[i]) != i+1) {
+					System.out.println("mixed");
+					return;
+				}
+			}
+			System.out.println("ascending");
 		}
 		
-		for(int i = 1; i < 10; i++)System.out.println(numberMap[i]);
+		//감소
+		else if(number[0].equals("8")) {
+			for(int i = 0; i < 8; i++) {
+				if(Integer.parseInt(number[i]) != 8-i) {
+					System.out.println("mixed");
+					return;
+				}
+			}
+		
+			System.out.println("decending");
+		}
+			
+		else System.out.println("mixed");
 	}
 }
