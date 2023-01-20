@@ -27,7 +27,16 @@ class OldisButGoodies2 implements Aircon {
 
 // TODO: 1. 무풍 에어컨을 구현해보자.
 // END:
+class NoWindAircon implements Aircon{
 
+	@Override
+	public void makeCool() {
+		// TODO Auto-generated method stub
+		System.out.println("집중 냉각ㄱㄱ");
+		
+	}
+	
+}
 public class StaticDefaultMethod {
     public static void main(String[] args) {
         Aircon[] aircons = { new OldisButGoodies1(), new OldisButGoodies2() };

@@ -7,6 +7,7 @@ public class PrinterTest {
         client.setPrinter(new DotPrinter());
         // TODO: client가 LazerPrinter를 사용하도록 하고 클래스의 변화를 확인하시오.
         // END:
+        client.setPrinter(new LaserPrinter());
         client.printThis("myfile");
 
     }

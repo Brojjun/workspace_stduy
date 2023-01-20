@@ -1,9 +1,8 @@
-// ##DELETE_FILE:
 package com.ssafy.f_interface.generic.box;
 
 public class NumberBox<T extends Number> {
     @SuppressWarnings("unchecked")
-    public void addSomes(T... ts) {
+    public void addSomes(T... ts) { //... variable
         double sum = 0;
         for (T t : ts) {
             sum += t.doubleValue();
@@ -11,13 +10,13 @@ public class NumberBox<T extends Number> {
         System.out.printf("총 합은: %f%n", sum);
     }
 
-    private T some;
+private T some;
 
-    public T getSome() {
-        return some;
-    }
+public T getSome() {
+    return some;
+}
 
-    public void setSome(T some) {
-        this.some = some;
-    }
+public void setSome(T some) {
+    this.some = some;
+}
 }
