@@ -16,13 +16,13 @@ public class TypeParameterMethodTest<T> {
 		System.out.println(clz.getName());
 		System.out.println(clz.getSimpleName());
 
-//        System.out.printf("클래스 레벨의 T: %s%n", some.getClass().getSimpleName());
-//        System.out.printf("파라미터 레벨의 P: %s%n", p.getClass().getSimpleName());
+        System.out.printf("클래스 레벨의 T: %s%n", some.getClass().getSimpleName());
+        System.out.printf("파라미터 레벨의 P: %s%n", p.getClass().getSimpleName());
 	}
 
 	public <P> P method2(P p) {
-//        System.out.printf("클래스 레벨의 T: %s%n", some.getClass().getSimpleName());
-//        System.out.printf("파라미터 레벨의 P: %s%n", p.getClass().getSimpleName());
+        System.out.printf("클래스 레벨의 T: %s%n", some.getClass().getSimpleName());
+        System.out.printf("파라미터 레벨의 P: %s%n", p.getClass().getSimpleName());
 		return p;
 	}
 
