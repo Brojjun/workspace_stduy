@@ -1,18 +1,26 @@
 package com.ssafy.hw.step2;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-public class UserManager {
+public class UserManager implements IUserManager {
+
+	private List<User> userList = new ArrayList<>();
 
 	private final int MAX_SIZE = 100;
 
-	private int size = 0;
-	
-	private User[] userList = new User[MAX_SIZE];
+	private static UserManager um = new UserManager();
+
+	private UserManager() {
+	};
+
+	public static UserManagerImpl getInstance() {
+		return um;
+	}
 
 	public void add(User user) {
-		if (size < MAX_SIZE) {
-			userList[size++] = user;
+		if (userList.size() < MAX_SIZE) {
+			userList.add(user);
 		} else {
 			System.out.println("유저의 수가 100을 넘었습니다. 등록 불가.");
 		}
@@ -20,104 +28,73 @@ public class UserManager {
 
 	public User[] getList() {
 
-		return Arrays.copyOfRange(userList, 0, size);
+		User[] res = new User[userList.size()];
+
+		return this.userList.toArray(res);
 	}
-	
-	// 일반 사용자만 반환
+
 	public User[] getUsers() {
-		
-		int cnt = 0;
-		
-		for(int i=0; i<this.size; i++) {
-			// 리스트안의 객체가 VipUser 클래스의 인스턴스인지 검사
-			if(!(userList[i] instanceof VipUser)) {
-			//if(userList[i] instanceof User) {
-				cnt++;
+
+		List<User> list = new ArrayList<>();
+
+		for (int i = 0; i < userList.size(); i++) {
+			if (!(userList.get(i) instanceof VipUser)) {
+				list.add(userList.get(i));
 			}
 		}
-		
-		if (cnt == 0)
-			return null;
-		
-		User[] res = new User[cnt];
-		
-		for(int i=0, index = 0; i<this.size; i++) {
-			// 리스트안의 객체가 VipUser 클래스의 인스턴스인지 검사
-			if(!(userList[i] instanceof VipUser)) {
-			//if(userList[i] instanceof User) {
-				res[index++] = userList[i];
-			}
-		}
-		
-		return res;
-		
+
+		User[] res = new User[list.size()];
+
+		return list.toArray(res);
+
 	}
-	
-	// VipUser만 반환
+
 	public VipUser[] getVipUsers() {
-		
-		int cnt = 0;
-		
-		for(int i=0; i<this.size; i++) {
-			// 리스트안의 객체가 VipUser 클래스의 인스턴스인지 검사
-			if(userList[i] instanceof VipUser) {
-				cnt++;
+
+		List<VipUser> list = new ArrayList<>();
+
+		for (int i = 0; i < userList.size(); i++) {
+			if (!(userList.get(i) instanceof VipUser)) {
+				list.add((VipUser) userList.get(i));
 			}
 		}
 		
-		if (cnt == 0)
-			return null;
-		
-		VipUser[] res = new VipUser[cnt];
-		
-		for(int i=0, index = 0; i<this.size; i++) {
-			// 리스트안의 객체가 VipUser 클래스의 인스턴스인지 검사
-			if(userList[i] instanceof VipUser) {
-				res[index++] = (VipUser)userList[i];
-			}
-		}
-		
-		return res;
-		
+		VipUser[] res = new VipUser[list.size()];
+
+		return list.toArray(res);
+
 	}
 	
-	public User[] searchByName(String name) {
+	// 예외를 던진다고 선언
+	public User[] searchByName(String name) ___________ ___________ {
 
-		int cnt = 0;
+		List<User> list = new ArrayList<>();
 
-		for (int i = 0; i < this.size; i++) {
-			// 주어진 이름을 포함하는 사용자인지 검사
-			if (userList[i].getName().contains(name)) {
-				cnt++;
+		for (int i = 0; i < userList.size(); i++) {
+			if (userList.get(i).getName().contains(name)) {
+				list.add(userList.get(i));
 			}
 		}
+		
+		// 주어진 단어를 포함하는 사용자가 없으면 예외를 던진다.
+		if(list.size() == 0)
+			_______ ____ _________________;
+		
+		User[] res = new User[list.size()];
 
-		if (cnt == 0)
-			return null;
-
-		User[] res = new User[cnt];
-
-		for (int i = 0, index = 0; i < this.size; i++) {
-			// 주어진 이름을 포함하는 사용자인지 검사
-			if (userList[i].getName().contains(name)) {
-				res[index++] = userList[i];
-			}
-		}
-
-		return res;
+		return list.toArray(res);
 	}
-	
-	// 사용자의 평균 나이 반환
+
 	public double getAgeAvg() {
-		
+
 		int sum = 0;
-		
-		for(int i=0; i<this.size; i++) {
-			sum += userList[i].getAge();
+
+		for (int i = 0; i < userList.size(); i++) {
+			sum += userList.get(i).getAge();
 		}
-		
-		return sum/this.size;
-		
+
+		return sum / userList.size();
+
 	}
 
 }
