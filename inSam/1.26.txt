@@ -1,0 +1,144 @@
+자료구조
+
+Array : 
+	1. 가장 기본적인 자료구조
+	2. 동일한 데이터 타입
+	3. Polymorphism : 다형성, 담을땐 편하지만... Object로 담으면 Object로만 가지고 올 수 있다. , 런타임에서 타입 확인 후 사용
+	4. Generic : 컴파일 타임에 저장으로 인해 타입 제한 -> 형변환 Fuck
+
+Collection Framework
+->java.util 패키지에 담궈둠
+
+구조 :
+Iterable - Collection - List
+		  - Set
+
+		    Map
+
+3대 인터페이스임
+
+List : 순서가 있는 집함 
+	ArrayList, LinkedList
+Set : 순서 X, 중복 허락 X, 같은 데이터 구분 X
+	HashSet, TreeSet
+Map : key + value 조합 / 순서 x / key중복x but value 중복o
+	HashMap, TreeMap
+
+
+
+
+Collection interface
+
+	추가 add / addAll
+
+	조회 contains / containsAll / equals / isEmpty / iterator / size
+
+	삭제 clear / removeAll / retainAll
+
+	기타
+
+
+List (순서가 있는 데이터 집합)
+
+List - Vector - stack
+     - ArrayList 
+     - LinkedList
+
+
+List
+add 
+addAll
+get
+indexof
+lastindexof
+
+
+
+
+ArrayList -> c++의 vector마냥 object Array를 확장하는 방식으로 구현
+
+LinkedList -> 각 요소를 Node로 정의하고 Node는 다음 요소의 참조값과 데이터로 구성
+
+forEach 문장은 Collection 크기가 불변해야 함!!!
+
+
+Set interface
+	순서 없이 주머니에 데이터를 넣는 형태
+	순서가 없어서 index가 없어 중복이 허용되지X
+
+Map interface (Collection 인터페이스가 아니다.)
+	key - value
+
+Map	- Hashtable(과거) - Properties
+	- HashMap
+	- SortedMap - NavigableMap - TreeMap
+
+주요 메서드 :
+	추가 :
+		put
+		putAll
+	
+	조회 : 
+		containsKey // key값 기반 조회
+		containsValue // Value값 기반 조회
+		entrySet // set으로 관리? -> 잘 모르겠당?
+		keySet // 
+		get // key를 가지고 조회
+		values // Value를 가지고 조회
+		size //
+		isEmpty 
+
+	삭제 : 
+
+
+
+
+SORT
+
+ * 0 : 자리바꿈 없음
+		 * 음수 : 비교대상보다 앞으로 이동
+		 * 양수 : 비교대상보다 뒤로 이동
+		 */
+		
+		//내나이 30 인자나이 49
+		//30 - 49 = -19
+		//음수니깐 비교대상보다 앞으로 이동
+		// 
+		@Override
+		public int compareTo(Data o) {
+			//나이순 정렬
+			//(this.age - o.age) * -1 하면 정렬순서 바꾸기~쌉가능~
+			//return this.age - o.age; // 내나이 - 인자나이 => 음수 => 
+			// TODO Auto-generated method stub
+			
+			//이름순정렬
+			return this.name.compareTo(o.name);
+		}
+
+
+
+comporable <-> comporator
+-> comparTo(data o)  <-> compare(data o1, data o2)
+
+@FunctionalInterface 의 overrinde 3가지 방식
+1. 전통적인 class 설계 방식
+	-> interface를 상속바다 재정의하여 사용
+
+2. 익명class 사용
+	-> 해당 class가 필요할 때 인스턴스를 생성사고, 거기다가 override하는 방식
+		ex )
+
+		list.stream().forEach(new Consumer<String>() {
+
+			@Override
+			public void accept(String t) {
+				// TODO Auto-generated method stub
+				System.out.println(t);
+			}
+			
+		});
+
+3. 람다식 사용
+	-> 생략을 통해 간단하게 원하는 기능 구축
+		ex1) list.stream().forEach(t->System.out.println(t));
+		ex2) Arrays.sort(d, (o1,o2)->o1.year - o2.year);
