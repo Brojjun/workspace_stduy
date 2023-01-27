@@ -1,36 +1,68 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-		public static void main(String[] args) throws Exception {
-			Scanner sn = new Scanner(System.in);
-			int n = sn.nextInt();
-			int[][] map = new int[2][n];
-			for(int i = 0; i < n; i++) {
-				map[0][i] = sn.nextInt();
-				map[1][i] = sn.nextInt();
-			}
-			int[] memo = new int[n];
-			
-			for(int i = 0; i < n; i++) {
-				int cnt = 0;
-				for(int j = 0; j < n; j++) {
-					if(i == j)continue;
-					if(map[0][i] < map[0][j] && map[1][i] < map[1][j]) cnt++;
-					
-				}
-				memo[i] = cnt+1;
-			}
-			
-			for(int i = 0; i < n; i++) {
-				System.out.print(memo[i] + " ");
-			}
-			
-		}
-			
-	
-			
-}		
-	
+	static int map[];
+	static int virtual[];
+	static int bn;
 
-	
-	
+	public static void input() throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		bn = Integer.parseInt(br.readLine());
+		map = new int[bn];
+		virtual = new int[bn];
+
+		for (int i = 0; i < bn; i++)
+			map[i] = Integer.parseInt(br.readLine());
+
+	}
+
+	public static void divide(int begin, int end) {
+		int mid = (begin + end) / 2;
+		if (begin < end) {
+			divide(begin, mid);
+			divide(mid + 1, end);
+		}
+		else
+			merge(begin, mid, end);
+
+	}
+
+	public static void merge(int begin, int mid, int end) {
+		int left = begin;
+		int right = mid;
+		int cnt = begin;
+		
+		while(left <= mid && right <= end) {
+			if(map[left] < map[right]) 
+				virtual[cnt++] = map[left++];
+			
+			else if(map[left] >= map[right])
+				virtual[cnt++] = map[right++];
+		}
+		
+		if(left > mid) {
+			while(right < end) {
+				virtual[cnt++] = map[left++];
+			}
+		}
+		else if(right > end) {
+			while(left < mid) {
+				virtual[cnt++] = map[right++];
+			}
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		input();
+		divide(0, bn-1);
+		// print
+		for (int i = 0; i < bn; i++) {
+			System.out.println(virtual[i]);
+		}
+
+	}
+}

@@ -11,7 +11,8 @@ import java.io.OutputStream;
 
 public class ProcessingFileCopyTest {
 	public static void main(String[] args) {
-		File src = new File("c:/Windows/explorer.exe");
+		File src = new File("c:/W"
+				+ "indows/explorer.exe");
 		File target = new File("c:/Temp/copied_explorer.exe");
 
 		try (FileInputStream fi = new FileInputStream(src); FileOutputStream fo = new FileOutputStream(target);) {

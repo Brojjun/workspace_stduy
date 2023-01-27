@@ -1,16 +1,37 @@
 package com.ssafy.ws.step3;
 
+import java.io.Serializable;
 
-
-public class Book {
-
+/**
+ * 도서 정보를 나타내는 클래스
+ */
+public class Book implements Serializable {	// 객체 직렬화 가능하도록  Serializable 인터페이스 구현
+	//코드를 작성해주세요. 
+	
 	private String isbn;
 	private String title;
 	private String author;
 	private String publisher;
 	private int price;
 	private String desc;
+	private int quantity;
 	
+	
+	public Book() {
+		super();
+	}
+
+	public Book(String isbn, String title, String author, String publisher, int price, String desc, int quantity) {
+		super();
+		this.isbn = isbn;
+		this.title = title;
+		this.author = author;
+		this.publisher = publisher;
+		this.price = price;
+		this.desc = desc;
+		this.quantity = quantity;
+	}
+
 	public String getIsbn() {
 		return isbn;
 	}
@@ -59,23 +80,21 @@ public class Book {
 		this.desc = desc;
 	}
 
-
-	
-	public Book(String isbn, String title, String author, String publisher, int price, String desc) {
-		this.isbn = isbn;
-		this.title = title;
-		this.author = author;
-		this.publisher = publisher;
-		this.price = price;
-		this.desc = desc;
+	public int getQuantity() {
+		return quantity;
 	}
 
-@Override
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
 	public String toString() {
-		return "Book [isbn=" + isbn + ", title=" + title + ", author=" + author + ", publisher =" + publisher + ", price =" + price + ", desc = " + desc
-				+ "]";
+		return isbn + "  |   " + title + "  |   " + author + "  |   " + publisher
+				+ "  |   " + price + "  |   " + desc + "  |   " + quantity;
 	}
-
+	
+	
 	
 }
 

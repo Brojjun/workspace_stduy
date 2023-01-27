@@ -1,0 +1,223 @@
+Input / Output
+
+입력과 출력의 끝단 : Node
+
+두 노드를 연결하여 데이터를 전송하는 개념 : Stream
+
+Stream은 단방향 통신 ( 동시에 입 출력을 처리할 수 없음
+
+
+Node stream : node에 연결되는 스트림
+데이터 타입 / 방향 / 노드 타입 / 최종 노드 스트림
+
+데이터 타입 :			방향 : 		 	노드타입 :		최종 노드 스트림 :
+	XXStream(byte) 		InputStream		키보드			InputStream
+							모니터			OutputStream
+	XXer(char) -		OutputStream		파일			Reader
+							...			...
+
+InputStream의 주요 메서드
+
+read() -> 하나의 바이트를 읽어 int로 반환 -> 오버로딩으로 3개 ->
+	1. read() : byte한개
+	2. read
+close() -> 스트림을 종료해 자원을 반납
+
+
+package com.ssafy.h_fileio.io.node -> SipleInputTest 
+	-> buffer단위와 char단위, buffer[]단위로 데이터 읽는 코드 ( 유니코드와 아스키코드의 차이 )
+
+
+OutputStream의 주요 메서드
+
+write() -> byte단위 출력
+	1. write(int b) : b의 내용을 byte로 출력
+	2.
+	3.
+..
+
+writer() -> write확장
+	append();
+	
+File() -> 파일과 디렉터리를 다루는 클래스 -> 읽고 쓰기기능은 없음
+
+
+package com.ssafy.h_fileio.io.node -> UseFileStream
+상대 경로 <-> 절대경로
+
+->상대경로에서 현재위치 -> java program을 실행하는 위치
+	src는 소스코드가 있고, bin 폴더가 현재위치 (bin 폴더에 실행파일 저장)
+
+
+파일경로는 properties를 통해 확인 가능
+
+
+FileInputStream()
+FileOutputStream()
+
+
+
+com.ssafy.h_fileio.io.node -> UseFileStream -> fileMove()
+파일 이동 (권한 문제로 실패)
+
+
+노드스트림 과정
+
+키보드 -> system.in -> scanner -> filewriter -> diary.txt -> filereader -> system.out -> 모니터
+
+
+일기작성에 모두 농축되어 있음
+package com.ssafy.h_fileio.io.node -> NodeDiaryTest
+
+
+
+
+
+보조스트림 : Filter Stream, Processing Stream
+- 다른 스트림에 부가적인 기능을 제공하는 스트림 -> 문자 set 변환 / Buffering / 기본 데이터 형의 전송 / 객체 입출력
+
+스트림 체이닝 : 필요에 따라 여러 보조 스트림을 연결해서 사뇽
+
+node <-노드스트림-> 보토스트림1 + 보조스트림2 <-> 프로그램
+
+
+byte to	InputStreamReader / OutputStreamWriter	=> byte 스트림을 char 스트림으로 변환 ( 한글이 좋은 예시 )
+char
+	(버퍼기반)
+버퍼링	BufferedInputStream / BufferedOutputStream	=> 버퍼링을 통한 속도 향상
+속도	(char기반)
+향샹	BufferedReader / BufferedWriter 		=>
+
+객체전송	ObjectInputStream / 
+
+
+
+ex)
+new BufferedInputStream(System.in);
+
+new DataInputStream(new BufferedInputStream(System.in)
+		<-			<-
+
+사용할 스트림의 결정 과정
+
+	1. 노드가 무엇인가 ? 
+
+	2. type은 char or byte
+
+	3. direction
+		
+	4. 어떤 추가 기능 ?
+
+ex)
+	1.영화 파일을 빠른 속도로 이동
+		1) File 
+		2) byte
+		3) 읽기(fileInputStream) + 쓰기(fileOutputStream)	
+		4) BufferedInputStream  +   BufferedOutputStream
+
+	2. 키보드에서 유니코드 문자를 안전하고 빠르게 읽고 싶다.
+		1) Keyboard
+		2) byte
+		3) 읽기 (inputStream(System.in))
+		4) InputStreamReader(안전하게) + BufferedReader(빠르고)
+
+	3. 메모리의 객체를 파일로 저장하고 싶다.
+		1. file, object
+		2. byte
+		3. 쓰기(fileOutputStream)
+		4. 객체 (ObjectOutputStream)
+
+보조 스트림의 예시
+	InputStreamReader & OutputStreamWriter
+		- Byte기반 스트림을 char 기반으로 변경해주는 스트림
+
+	BufferedInputStream
+		- 버퍼링을 활용해 한번에 읽고 버퍼에 저장하는 방법을 통해 속도 향상
+
+
+
+
+
+
+
+보조 스트림의 활용
+	-객체 직렬화
+		=객체를 파일등에 저장하거나 네트워크로 전송하기 위해 연속적 데이터로 변환
+		=반대의 경우 역 직렬화
+
+	-직렬화가 되기 위한 조건
+		=Serializable 인터페이스를 구현할 것
+		=클래스의 모든 멤버가 Serializable 인터페이스를 구현해야 함
+		=직렬화에서 제외하려는 멤버는 transient 선언
+		
+
+
+
+	ex)
+
+class LoginInfo implements Serializable{
+	private int a;
+}
+
+class Person implements Serializable{
+	private String name;
+	private int age;
+	
+	private transient String son;
+	private LoginInfo Info;
+}
+
+
+객체 직렬화
+	- serialVersionUID
+		=클래스의 변경 여부를 파악하기 위한 유일 키
+		=직렬화 할 때의 UID와 역 직렬화 할 때의 UID가 다를 경우 예외 발생
+		=직렬화되는 객체에 UID가 설정되지 않았을 경우 컴파일러가 자동 생성
+			->멤버 변경으로 인한 컴파일 시마다 변경 -> InvaildClassException
+		=직렬화되는 객체에 대해서 SerialVersionUID 설정 권장
+
+
+ObjectInputStream & ObjectOutputStream
+
+ex)
+package com.ssafy.h_fileio.io.process.object -> ObjectStream.java
+
+
+
+serial UID는 결국 CLASS 의 버전 정보 -> 딱히 명시적으로 할 필요는 없다. -> 
+TXT, JSON, XML 등의 파일에는 할 필요가 있을 수도 있다.
+
+
+
+예시 : private static final long serialVersionUID = 4772549766727107014L;
+
+알고는 있자.
+
+package com.ssafy.h_fileio.io.process.object; 확인
+
+
+
+다른 언어나 데이터 저장용 파일에는 명시적인 적용이 유리할 수 있지만 하려면 개짜증날듯?
+->왜냐하면 JAVA에서는 객체에 대해 자동으로 UID를 배정하지만, 다른 언어는 그렇지 않기 때문
+
+EX _ 
+private static final long serialVersionUID = 4772549766727107014L;
+
+Person에 마우스를 올리면 나오는 것들 중에
+Add gereated serial version ID 를 통해 명시적 표현이 가능!!
+
+
+(byte)
+InputStream
+OutputStream
+
+(char)
+Reader
+Writer
+
+
+
+byte와 char의 구분 기준
+	-> 플러그인 프로그램의 도움 없이 메모장에서 볼 수 있으면 char 
+		->가지고와서 조작하는 것이 기본 베이스
+		->
