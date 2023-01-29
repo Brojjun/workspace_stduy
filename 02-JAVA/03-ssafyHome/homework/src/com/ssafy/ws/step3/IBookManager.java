@@ -28,4 +28,6 @@ public interface IBookManager{
 	public void buy(String isbn, int quantity)  throws QuantityException;
 	
 	public void saveData();
+	
+	public void loadData();
 }

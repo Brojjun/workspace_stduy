@@ -19,14 +19,14 @@ import java.util.List;
 public class BookManagerImpl implements IBookManager {
 
 	List<Book> books = new ArrayList<>();
-	private IBookManager ib = new BookManagerImpl();
+	private static IBookManager ib = new BookManagerImpl();
 
-	private BookManagerImpl() {
+	BookManagerImpl() {
 		super();
 	}
 
-	public IBookManager getInstance() {
-		return this.ib;
+	public static IBookManager getInstance() {
+		return ib;
 	}
 
 	@Override
@@ -118,35 +118,44 @@ public class BookManagerImpl implements IBookManager {
 
 	@Override
 	public void sell(String isbn, int quantity) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub]
+		// 원하는 기능이 적혀있지 않습니다. 
 
 	}
 
 	@Override
 	public void buy(String isbn, int quantity) {
 		// TODO Auto-generated method stub
+		// 원하는 기능이 적혀있지 않습니다. 
 
 	}
-
-	private void loadData() {
+	//역직렬화
+	public void loadData() {
 		try {
-			FileInputStream fis = new FileInputStream("book.dat");
-			ObjectInputStream oir = new ObjectInputStream(fis);
-			while (true) {
-				books.add((Book) oir.readObject());
-			}
+			
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("book.dat"));
+            books = (List<Book>) ois.readObject();
+            ois.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			System.out.println("더이상 도서 없음");
-		}catch (EOFException e) {
-			System.out.println("더이상 도서 없음");
-		}
+		}		
 	}
 
+	//직렬화
 	@Override
 	public void saveData() {
 		// TODO Auto-generated method stub
+		try {
+          ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("book.dat"));
+          oos.writeObject(books);
+          oos.close();
+          
+		} catch(IOException e){
+			e.printStackTrace();
+		}
 
 	}
 	// 코드를 작성해주세요.
