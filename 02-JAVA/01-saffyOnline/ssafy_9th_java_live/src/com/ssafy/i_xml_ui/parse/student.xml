@@ -2,7 +2,9 @@
 <!DOCTYPE ssafy SYSTEM "./student.dtd">
 <ssafy>
 	<student no="12345">
-		<name>홍길동</name>
+		<name>
+			<![CDATA[age < 10]]>	<!-- cdata : character data-->
+		</name>
 		<loc>광주</loc>
 		<phone>010-222-3333</phone>
 	</student>

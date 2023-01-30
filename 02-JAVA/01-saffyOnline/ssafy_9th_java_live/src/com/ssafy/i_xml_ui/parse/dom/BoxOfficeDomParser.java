@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
 import com.ssafy.i_xml_ui.parse.BoxOffice;
 
 public class BoxOfficeDomParser {
-    private final File xml = new File("./src/com/ssafy/live5/parse/boxoffice.xml");
+    private final File xml = new File("./src/com/ssafy/i_xml_ui/parse/boxoffice.xml");
     private List<BoxOffice> list = new ArrayList<>();
 
     public List<BoxOffice> getBoxOffice() {
@@ -38,12 +38,39 @@ public class BoxOfficeDomParser {
 
     private void parse(Element root) {
         // TODO: root에서 dailyBoxOffice를 추출한 후 BoxOffice를 생성해 list에 저장하시오.
+    	NodeList boxOffices = root.getElementsByTagName("dailyBoxOffice");
+    	for(int i = 0; i < boxOffices.getLength(); i++) {
+    		//하나 하나의 boxoffice 접수 후 get에 넘김
+    		Node child = boxOffices.item(i);
+    		
+    		list.add(getBoxOffice(child));
+    		
+    		
+    	}
+    	
         // END:
     }
 
     private static BoxOffice getBoxOffice(Node node) {
         BoxOffice boxOffice = new BoxOffice();
         // TODO: node 정보를 이용해서 BoxOffice를 구성하고 반환하시오.
+        NodeList childs = node.getChildNodes();
+        for(int i = 0; i < childs.getLength(); i++) {
+        	Node child = childs.item(i);
+        	if(child.getNodeName().equals("rank")) {
+        		boxOffice.setRank(Integer.parseInt(child.getTextContent()));
+        	}
+        	else if (child.getNodeName().equals("movieNm")) {
+        		boxOffice.setMovieNm(child.getTextContent());
+        	}
+        	else if (child.getNodeName().equals("openDt")) {
+        		boxOffice.setOpenDt(boxOffice.toDate(child.getTextContent()));
+        	}
+        	else if (child.getNodeName().equals("audiAcc")) {
+        		boxOffice.setAudiAcc(Integer.parseInt(child.getTextContent()));
+        	}
+        }
+        
         // END:
         return boxOffice;
     }

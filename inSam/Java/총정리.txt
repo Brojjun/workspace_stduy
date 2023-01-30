@@ -1,0 +1,29 @@
+
+Input / Output
+	- 1. what is the node? 	-> file / keyboard...
+	- 2. byte / char		-> XXStream / XXer
+	- 3. direction		-> Input / Output
+	- 4. 추가기능		-> BufferedReader(빠르게) / 객체 (ObjectOutputStream)
+
+(객체 파일 저장)객체를 파일로 저장하고싶으면 직렬화 역직렬화 필요 -> interface Serializable 을 implements 해야함
+	- SerialVersionUID는 자동으로 해주니깐 건들지 말자. -> 명시하게 되면 자동기능이 OFF
+
+
+Exception
+	- RuntimeException 인지 Exception 인지 구분 필요
+	- try catch로 현장에서 잡거나 or throws , throw 로 상위로 던지던가
+
+
+
+자료구조
+	Array : 동일데이터타입, Polymorphism, Generic
+
+	Iterable - Collection - List, Set
+			    Map
+
+	List : 순서 o (ArrayList, LinkedList)
+	Set : HashSet, TreeSet
+	Map
+
+
+

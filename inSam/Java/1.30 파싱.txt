@@ -1,0 +1,201 @@
+XML
+
+DTD파일에 문서 문법 정리 -> 공부하려면 알아서 ㄱ
+
+XML 파싱
+
+SAX parer
+	Simple API for XML parser
+	문서를 읽으면서 태그의 시작, 종료 등 이벤트 기반으로 처리
+	->조금 빠름 / 대신 앞으로 뒤로 이동이 불가능 ( 한번에 쫙 탐색 )
+
+DOM parser
+	Document Object Model
+	문서를 다 읽고 난 후 문서 구조 전체를 자료구조에 저장하여 탐색하는 방식
+	->다양한 탐색이 가능하지만 느리고 무거워 큰 문서는 힘듬
+
+
+SAX Parser Factory(이벤트 기반 Handler에 규정) -> SAX Parser -> MyHandler extends DefaultHandler 
+						<-XML 문서 
+
+DefaulHandler - startDocumnet() / 
+등등 이미 구현 
+
+
+DTO(Data Transform Object) - > 영화 정보를 저장하기 위한 클래스
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+XML Parser
+	- DOM Parser (부모 자식 관계를 이용)
+		- 읽은 데이터를 메모리에 상주시킨 뒤 사용 => 문서내용이 크면 사용힘듬
+		- ROOT Emlement가 하나 꼭 있어야 함 ( 다른 태그가 자기를 감싸고 있지 않은 태그 )
+			- Root - 자식 - 자식
+
+		0. DocumentBuilder_Factory -> 1. DocumentBuilder_Parser 생성 -> 2. parser.parse(xml ) -> 3. 
+			-> (Documnetbuilderfactory.newdocumentBuilder)		-> !!!알아서 내용 저장한 Document객체를 return!!!
+
+
+
+	- SAX Parser
+		- 한번만 읽고 종료
+		- 시점이 지나면 다시 확인 불가능하기때문에
+		- 필요하면 데이터를 뽑아서 직접 저장해야함
+			-<a> start element
+			-</a> end element
+			- 내용 chariters
+
+		- DefaultHandler 를 상속받아서 필요한 이벤트 시점을 오버라이딩 해서 사용할 필요가 있다.
+
+		0. SAX_Parser_Factory -> 1. SAX_Parser 생성 -> 2. parser.parse(xml, userhandler{이벤트를 어떻게 처리할 것인지에 대한 핸들러}) -> 3. 
+			-> (factory.newSAXparser)			-> !!!이벤트를 어떻게 처리할 것인지에 대한 사용자 정의 핸들러를 인자로 받아 처리!!! ( 익명클래스같은거 쓰면 좋을듯? )
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
+Dom
+
+0. 팩토리 생성
+DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+1. 파서 생성
+DocumentBuilder builder = factory.newDocumentBuilder();
+
+2. 데이터 파일 JAVA로 가져오기
+Document doc = builder.parse(xml);
+
+
+3. 데이터의 Root 주소 가져오기
+Element root = doc.getDocumentElement();
+
+4. root부터 시작해서 "data" 태그를 기준으로 잘라서 list에 저장하기
+NodeList weathers = root.getElementsByTagName("data");
+
+5. 반복문을 통해 자른 data태그 내부를 확인
+for(int i = 0; i < weathers.getLength(); i++) {
+	//child는 "data"태그 중 하나를 가져오는 node
+	Node child = weathers.item(i);
+			
+	//wea에 <data></data>에서 원하는 태그의 데이터를 객체에 저장
+	DailyWeather wea = new DailyWeather();
+			
+	//<data></data>내에 있는 많은 태그를 각 태그별로 childs에 저장(4번과정 반복)
+	NodeList childs = child.getChildNodes();
+
+			//for문을 통해 <data></data>내부의 태그 확인하며 필요한 태그만 수집
+			for(int j = 0; j < childs.getLength(); j++) {
+				Node onetag = childs.item(j);
+				if(onetag.getNodeName().equals("hour")) {
+					wea.setAfterhour(Integer.parseInt(onetag.getTextContent()));
+				}
+				else if(onetag.getNodeName().equals("day")) {
+					wea.setAfterDay(Integer.parseInt(onetag.getTextContent()));
+				}
+				else if(onetag.getNodeName().equals("wfKor")) {
+					wea.setWeather(onetag.getTextContent());
+				}
+				else if(onetag.getNodeName().equals("wdKor")) {
+					wea.setDir(onetag.getTextContent());
+				}
+				
+			}
+			dlist.add(wea);
+		}
+		
+	}
+
+
+
+
+SAX
+// 0단계 팩토리 생성
+SAXParserFactory factory = SAXParserFactory.newInstance();
+// 1단계 파서 생성
+SAXParser parser = factory.newSAXParser();
+
+// 2단계 핸들러 익명객체로 정의해서 파싱 진행
+
+parser.parse(xml, new DefaultHandler() {
+				@Override // 시작(생성자 같은 느낌)
+				public void startDocument() throws SAXException {
+					System.out.println("SAX를 사용해 파싱 시작");
+				}
+
+				@Override // 종료 (소멸자 같은 느낌)
+				public void endDocument() throws SAXException {
+					System.out.println("SAX를 사용한 파싱 종료");
+				}
+
+				@Override // 태그의 앞부분을 발견하고 characters 호출
+				public void startElement(String uri, String localName, String qName, Attributes attributes)
+						throws SAXException {
+					// TODO Auto-generated method stub
+					if (qName.contains("data")) {
+						current = new DailyWeather();
+					}
+				}
+
+				@Override // 태그의 뒷부분을 발견 content에 저장한 내용을 저장한다.
+				public void endElement(String uri, String localName, String qName) throws SAXException {
+					// TODO Auto-generated method stub
+					if (qName.equals("hour"))
+						current.setAfterhour(Integer.parseInt(content));
+					else if (qName.equals("day"))
+						current.setAfterDay(Integer.parseInt(content));
+					else if (qName.equals("wfKor"))
+						current.setWeather(content.toString());
+					else if (qName.equals("wdKor"))
+						current.setDir(content.toString());
+					else if (qName.contains("data")) {
+						slist.add(current);
+						current = null;
+					}
+				}
+				//태그의 내용 발견 -> 내용을 content에 저장하고 endElement 호출
+				public void characters(char[] ch, int start, int length) throws SAXException {
+					content = new String(ch, start, length);
+				}
+
+			});
+			
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} //
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

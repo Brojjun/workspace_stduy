@@ -1,18 +1,3 @@
-class ssafyBoxOffice{
-	boxofficeResult boxOfficeResult;
-
-}
-class boxofficeResult{
-	String boxofficeType;
-	String showRnage;
-	List<BoxOffice> dailyBoxOfficeList;
-}
-class BoxOffice {
-	int runm;
-	int rand;
-	...
-}
-
 {
 	"boxOfficeResult": {
 		"boxofficeType": "일별 박스오피스",
