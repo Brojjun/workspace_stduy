@@ -27,7 +27,7 @@ public class Main {
 				arr.push(Integer.parseInt(imm.substring(5)));
 			
 			else if(imm.equals("pop")) {
-				if(arr.isEmpty())	System.out.println(-1);
+				if(arr.isEmpty())	System.out.println("-1");
 				else	System.out.println(arr.pop());
 			}
 			
@@ -35,11 +35,11 @@ public class Main {
 				System.out.println(arr.size());
 			
 			else if(imm.equals("empty")) 
-				System.out.println(arr.isEmpty() ? 0 : 1);
+				System.out.println(arr.isEmpty() ? "1" : "0");
 			
 			else if(imm.equals("top")) {
 				if(arr.isEmpty())	System.out.println(-1);
-				else	System.out.println(arr.peek());
+				else System.out.println(arr.peek());
 			}
 		}
 	
