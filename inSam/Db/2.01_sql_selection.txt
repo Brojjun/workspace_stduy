@@ -1,0 +1,39 @@
+Select의 가장 기본적인 형태
+->
+	select employee_id as 사번, last_name as 이름, salary as 급여, salary * 12 as 연봉, ifnull(commission_pct,0) as 성과퍼센트, (salary*12) + (salary * 12) * ifnull(commission_pct, 1) as 원천징수
+	from employees;
+
+
+	-> ifnull 함수 -> ifnull(null,1) => 0번 인자가 null일 경우 1을 출력
+
+	-> case를 이용한 row 생성
+	select employee_id as 사번, last_name as 이름 , salary,  
+		case
+			when salary >= 15000 then "고액연봉"
+			when salary >= 8000 then "평균연봉"
+			else "저액연봉"
+		end "등급"
+	from employees;
+
+	NULL 비교
+		deaprtment_id = null; -> 불가능
+		department_d is null; -> 가능
+		department_d is not null -> 가능
+
+	like 키워드
+	where first_name like '%x%'; ->이름에 x가 들어간
+
+	where first_name like '%x__'; -> 끝에서 3번째 자리에 x가 들어간
+
+	order by "" desc; (내림차순)
+	order by ""; (오름차순)
+
+
+	limit 3; 키워드 -> 데이터 3개만 자른다.
+	ex)
+		select *
+ 		 from employees
+ 		limit 3;
+
+
+	 
