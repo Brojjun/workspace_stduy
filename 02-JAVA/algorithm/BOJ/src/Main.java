@@ -8,56 +8,41 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
 
 public class Main {
-
-	
-	static StringBuffer sb = new StringBuffer();
-
-	
-	static int[] map;
-	static int bn;
-	static long bc;
-	static long end;
-
-
-	public static boolean check(long cut) {
-		long tree = 0;
-		for(int i = 0; i < bn; i++)
-			if(map[i] - cut > 0)
-				tree += (map[i] - cut);
+	public static void main(String[] args) throws IOException {
 		
-		return tree >= bc;
-	}
-	
-	
-	public static void binary_search() {
-		long begin = 0;
-		long end = 1000000001;
-		
-		while(begin + 1 < end) {
-			long mid = (begin + end) / 2;
-		
-			if(check(mid)) {
-				begin = mid;
-				//System.out.println(begin +" : " + end);
-			}
-			else end = mid;
-			
-		}
-		System.out.println(begin);
-	}
-	
-
-	public static void main(String[] args) throws NumberFormatException, IOException {
 		Scanner sc = new Scanner(System.in);
-		bn = sc.nextInt();
-		bc = sc.nextInt();
-		map = new int[bn];
-		for(int i = 0; i < bn; i++) {map[i] = sc.nextInt(); end = Math.max(end, map[i]);}
-		Arrays.sort(map);
-		binary_search();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Stack<Integer> arr = new Stack<>();
+		
+		int bn = sc.nextInt();
+		for(int i = 0; i < bn; i++) {
+			//System.out.println(i);
+			String imm = br.readLine();
+			
+			if(imm.contains("push")) 
+				arr.push(Integer.parseInt(imm.substring(5)));
+			
+			else if(imm.equals("pop")) {
+				if(arr.isEmpty())	System.out.println(-1);
+				else	System.out.println(arr.pop());
+			}
+			
+			else if(imm.equals("size")) 
+				System.out.println(arr.size());
+			
+			else if(imm.equals("empty")) 
+				System.out.println(arr.isEmpty() ? 0 : 1);
+			
+			else if(imm.equals("top")) {
+				if(arr.isEmpty())	System.out.println(-1);
+				else	System.out.println(arr.peek());
+			}
+		}
+	
 		
 	}
 }
