@@ -10,39 +10,62 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
-
 public class Main {
 	public static void main(String[] args) throws IOException {
-		
-		Scanner sc = new Scanner(System.in);
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		Stack<Integer> arr = new Stack<>();
+
 		
-		int bn = sc.nextInt();
-		for(int i = 0; i < bn; i++) {
-			//System.out.println(i);
-			String imm = br.readLine();
+		int aa = 1;
+		
+		while (true) {
+			boolean check = false;
+	
+			Stack<Character> arr = new Stack<>();
+			String st = br.readLine();
+			if(st == ".")return;
 			
-			if(imm.contains("push")) 
-				arr.push(Integer.parseInt(imm.substring(5)));
-			
-			else if(imm.equals("pop")) {
-				if(arr.isEmpty())	System.out.println("-1");
-				else	System.out.println(arr.pop());
+			for (int i = 0; i < st.length(); i++) {
+				char imm = st.charAt(i);
+				if (imm == '(' || imm == '[')
+					arr.push(imm);
+
+				else if (imm == ')') {
+					if (arr.isEmpty()) {
+						System.out.println("no");
+						check = true;
+						break;
+					}
+					if (arr.pop() == '(')
+						continue;
+					
+					else {
+						System.out.println("no");
+						check = true;
+						break;
+					}
+				}
+				
+				else if (imm == ']') {
+					if (arr.isEmpty()) {
+						System.out.println("no");
+						check = true;
+						break;
+					}
+					
+					if (arr.pop() == '[')
+						continue;
+					
+					else {
+						System.out.println("no");
+						check = true;
+						break;
+					}
+				}
 			}
-			
-			else if(imm.equals("size")) 
-				System.out.println(arr.size());
-			
-			else if(imm.equals("empty")) 
-				System.out.println(arr.isEmpty() ? "1" : "0");
-			
-			else if(imm.equals("top")) {
-				if(arr.isEmpty())	System.out.println(-1);
-				else System.out.println(arr.peek());
-			}
+			if(!check)
+				System.out.println("yes");
 		}
 	
-		
+
 	}
 }
