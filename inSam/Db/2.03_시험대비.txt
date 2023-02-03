@@ -1,0 +1,52 @@
+추상클래스
+공통 : 1. 객체 생성 불가 2. 자시클래스가져와야한다.
+차이 : 1. 추상클래스만 구현된 메서드를 가질 수 있다.
+추상클래스 : 구현부가 없다.
+abstract
+
+
+자식은 접근제한자 넓어여하기 vs 좁아야하기
+
+public parent
+
+private child
+
+??
+
+
+set알아보기
+
+
+super()를 명시적으로 호출하면 부모 생성자가 호출되지 않는다.
+-> 명시적이지 않으면 기본생성자 호출
+
+exception 부분
+
+Generic wildcard ?
+
+List <P> list = new ArrayList<>();
+List<Object> list2 = list;
+->불가능
+<p>는 다형성이 적용 x
+
+-->주기 위해 ? 사용
+List<? extends Drink> list3 = list2;
+
+
+배열초기화 : 생성시 자동 초기화, 데이터타입에 해당하는 값으로 자동 초기화
+객체는 null
+
+변수 
+	로컬변수 : 메서드안에 있거나 ㅏ매게변수에 선언된 것 -> 객체가 생성될때 초기화
+	멤버변수 : 메서드에 포함되지 않은 것 -> 자동초기화 배열처럼 
+
+
+Collection - List, set, map
+
+
+추상클래스, 인터페이스
+공통 : 재정의해야함, 자식을 통해서만 생성 가능
+차이 : 
+
+FILE IO : STREAM
+
