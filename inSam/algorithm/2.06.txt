@@ -1,0 +1,43 @@
+표준 입출력
+
+System.in / System.out / System.err
+
+대상변경
+
+System.setOut) / System.setErr() / System.setLn()
+
+Scanner()
+-> nextInt() / nextDouble() / 
+next() -> white space를 만나면 stop
+nextLine() -> line단위로 입력
+
+
+StringTokenizer
+
+StringBuilder
+
+재귀함수
+기본부분 -> 끝내는 부분
++
+유도부분 -> 재귀파생 부분
+
+1. 함수(메소드)에 대한 정의 명확히 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
