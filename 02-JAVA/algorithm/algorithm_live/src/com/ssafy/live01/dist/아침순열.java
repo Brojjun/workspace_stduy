@@ -6,45 +6,37 @@ import java.util.List;
 import java.util.Scanner;
 
 public class 아침순열 {
-	
-	static int N, R;
-	static List <Integer> numbers;
-	static List <Integer> arr;
+	static int[] numbers;
 	static boolean[] visited;
-	
-	
+	static int N;
+	static int R;
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		N = sc.nextInt();
 		R = sc.nextInt();
 		
-		visited = new boolean[N+2];
-		numbers = new ArrayList<>();
-		arr = new ArrayList<>();
-		for(int i = 0; i < N; i++)arr.add(sc.nextInt());
+		numbers = new int[R];
+		visited = new boolean[N];
 		
-		makeNum();
+		makeNum(0,0);
 	}
 
-
-	private static void makeNum() {
-		if(numbers.size() == R) {
-			System.out.println(numbers.toString());
+	private static void makeNum(int cnt,int start) {
+		// TODO Auto-generated method stub
+		if(cnt == R) {
+			System.out.println(Arrays.toString(numbers));
 			return;
 		}
-		for(int i = 1; i <= N; i++) {
-			if(visited[i]) continue;
-			numbers.add(i);
-			visited[i]=true;
-			makeNum();
-			visited[i]=false;
-			numbers.remove(numbers.size()-1);
+		for(int i = start; i < N; i++) {
+			if(visited[i])continue;
+			//visited[i] = true;
+			numbers[cnt] = i;
+			makeNum(cnt+1,i+1);
+			numbers[cnt] = 0;
+			//visited[i] = false;
 		}
 		
 	}
 
-
-	
-	
-	
 }
