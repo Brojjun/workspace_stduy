@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main {
+public class boj_2023 {
 	static int end = 1;
 	static int[] map = { 2, 3, 5, 7 };
 	static StringBuffer sb = new StringBuffer();
