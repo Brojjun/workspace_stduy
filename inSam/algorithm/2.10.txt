@@ -1,0 +1,10 @@
+
+insert into
+update
+delete from
+공부하기
+
+union , union all
+
+별명을 where에는 쓸 수 없다.
+
