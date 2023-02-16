@@ -3,104 +3,95 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Scanner;
 import java.util.Stack;
 import java.util.StringTokenizer;
-
-
+ 
 public class Main {
-	
-
-	static ArrayList<ArrayList<Integer>> arr;
-	static int M;
-	static int N;
-	static int R;
-	static int [][]map;
-	static int [][]vmap;
-	
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
-		R = Integer.parseInt(st.nextToken());
-		
-		arr = new ArrayList<>();
-		
-		map = new int[N][M];
-		vmap = new int[N][M];
-	
-		for(int i = 0 ;i < N; i++) {
-			StringTokenizer st2 = new StringTokenizer(br.readLine());
-			for(int j = 0; j < M; j++) {
-				map[i][j] = Integer.parseInt(st2.nextToken());
-			}
-		}
-		
-		makeList(0,0,0);
-		makeMap(0,0,0);
-		for(int i = 0 ;i < N; i++) {
-			
-			for(int j = 0; j < M; j++) {
-				System.out.print(vmap[i][j] + " ");
-			}
-			if(i == N-1)break;
-			System.out.println();
-		}
-	}
-	
-	static int[] dx = {1,0,-1,0};
-	static int[] dy = {0,1,0,-1};
-	
-	private static void makeList(int y, int x, int n) {
-		if(M/2 <= n || N/2 <= n)return;
-		int dir = 0;
-		int ny = y;
-		int nx = x;
-		ArrayList<Integer> imm = new ArrayList<>();
-		int cnt = 1;
-		while(dir <= 3) {
-			
-			//vmap[ny][nx] = cnt++;
-			imm.add(map[ny][nx]);
-			if(ny+dy[dir] >= N-n || ny +dy[dir] < 0+n) { dir++;}
-			else if(nx + dx[dir] >= M-n || nx + dx[dir] < 0+n) {dir++;}
-			
-			
-			nx = nx + dx[dir];
-			ny = ny + dy[dir];
-			if(ny == y && nx == x)break;
-		}
-		arr.add(imm);
-		makeList(y+1,x+1,n+1);
-	}
-	
-	private static void makeMap(int y, int x, int n) {
-		ArrayList<Integer> imm = arr.get(n);
-
-		
-		if(M/2 <= n || N/2 <= n)return;
-		int dir = 0;
-		int ny = y;
-		int nx = x;
-	
-		int cnt = R % imm.size();;
-		while(dir <= 3) {
-			
-			//vmap[ny][nx] = cnt++;
-			vmap[ny][nx] = imm.get(cnt++);
-			if(cnt >= imm.size())cnt=0;
-			imm.add(map[ny][nx]);
-			if(ny+dy[dir] >= N-n || ny +dy[dir] < 0+n) { dir++;}
-			else if(nx + dx[dir] >= M-n || nx + dx[dir] < 0+n) {dir++;}
-			
-			
-			nx = nx + dx[dir];
-			ny = ny + dy[dir];
-			if(ny == y && nx == x)break;
-		}
-		arr.add(imm);
-		makeMap(y+1,x+1,n+1);
-	}
+     
+    static int map[][];
+    static int bn;
+    static boolean[] visit;
+    static boolean[] visited;
+    static int[] data;
+    static int min_data = Integer.MAX_VALUE;
+     
+ 
+    public static void main(String[] args) throws IOException {
+     
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int test = Integer.parseInt(br.readLine());
+        for(int T = 1; T <= test; T++) {
+            min_data = Integer.MAX_VALUE;
+            bn = Integer.parseInt(br.readLine());
+            map = new int[bn][bn];
+            visit = new boolean[bn];
+             
+            for(int i = 0; i < bn; i++) {
+                StringTokenizer st = new StringTokenizer(br.readLine());
+                for(int j = 0; j < bn; j++) {
+                    map[i][j] = Integer.parseInt(st.nextToken());
+                     
+                }
+            }
+             
+            makeNum(0,0);
+            System.out.println("#"+T+" "+min_data);
+        }
+         
+    }
+     
+     
+    static int score1 = 0;
+    private static void makeNum(int cnt, int start) {
+        if(cnt == bn/2) {
+            ArrayList<Integer> arr = new ArrayList<>();
+            ArrayList<Integer> arr2 = new ArrayList<>();
+             
+            for(int i = 0 ; i < bn; i++) {
+                if(visit[i])arr.add(i);
+                else arr2.add(i);
+            }
+             
+            visited = new boolean[bn];
+            score1 = 0;
+            data = new int[bn];
+            calScore(arr, 0);
+            int aa = score1;
+            visited = new boolean[bn];
+            score1 = 0;
+            data = new int[bn];
+            calScore(arr2, 0);
+            min_data = Math.min(min_data, Math.abs(aa - score1));
+            return;
+        }
+         
+        for(int i = start; i < bn; i++) {
+            if(visit[i])continue;
+            visit[i] = true;
+            makeNum(cnt+1,i+1);
+            visit[i] = false;
+        }
+    }
+ 
+ 
+ 
+    private static void calScore(ArrayList<Integer> arr,int cnt) {
+        if(cnt == 2) {
+            score1 += map[arr.get(data[0])][arr.get(data[1])];
+            return;
+        }
+        for(int i = 0; i < arr.size(); i++) {
+            if(visited[i])continue;
+            visited[i] = true;
+            data[cnt] = i;
+            calScore(arr,cnt+1);
+            data[cnt] = 0;
+            visited[i] = false;
+        }
+         
+    }
 }

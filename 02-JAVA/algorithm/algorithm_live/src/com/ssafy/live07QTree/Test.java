@@ -11,6 +11,10 @@ public class Test {
 			tree.add((char)(65+i));
 		}
 		
-		tree.bfs();
+		//tree.bfs();
+//		tree.dfsByPostorder();
+//		tree.dfsByInorder();
+		tree.dfsByPreorder();
+		tree.dfs();
 	}
 }
