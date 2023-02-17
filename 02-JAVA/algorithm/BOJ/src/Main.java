@@ -13,29 +13,70 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+class July2 implements Comparable<July2>{
+	int w;
+	int v;
+	public July2(int w, int v) {
+		super();
+		this.w = w;
+		this.v = v;
+	}
+	
+	@Override
+	public int compareTo(July2 o) {
+		return o.v - this.v;
+	}
+	
+}
 
+class July implements Comparable<July>{
+	int w;
+	int v;
+	public July(int w, int v) {
+		super();
+		this.w = w;
+		this.v = v;
+	}
+	
+	@Override
+	public int compareTo(July o) {
+		if(this.w == o.w) return o.v - this.v;
+		return this.w - o.w;
+	}
+	
+}
 
 public class Main {
+	static int start = 100;
+	static int end;
+	static int cnt = 0;
+	static int[] input = {};
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		BigInteger a = new BigInteger("1");
-		
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		
-		for(int i = 1 ; i <= n; i++) {
-			BigInteger b = new BigInteger(Integer.toString(i));
-			a = a.multiply(b);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		end = Integer.parseInt(br.readLine());
+		int m = Integer.parseInt(br.readLine());
+		input = new int[10 - m];
+		int[] imm = new int[m];
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		for(int i = 0; i < m; i++) {
+			imm[i] = Integer.parseInt(st.nextToken());
 		}
-		String im = a.toString();
-		//System.out.println(a.toString());
-		int cnt = 0;
-		
-		for(int i = im.length()-1; i >= 0; i--) {
-		if(im.charAt(i) == '0')cnt++;
-		else break;
-			
+		int at = 0;
+		int aat = 0;
+		for(int i = 0; i < 10; i++) {
+			if(i == at) {at++; continue;}
+			input[aat++] = i;
 		}
-		System.out.println(cnt);
+
+
+		for(int i = 0; i < input.length; i++)System.out.println(input[i]);
+		
+		
+		
 	}
+
+
+
 
 }
