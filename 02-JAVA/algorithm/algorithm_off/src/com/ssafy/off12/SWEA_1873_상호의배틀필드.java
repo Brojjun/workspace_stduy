@@ -1,3 +1,4 @@
+package com.ssafy.off12;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,7 +17,7 @@ class Car{
 	int x;
 	int dir;
 }
-public class Solution {
+public class SWEA_1873_상호의배틀필드 {
 	static int by, bx, bc, answer;
 	static String[][] map;
 	static String[] move;
