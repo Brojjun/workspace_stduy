@@ -3,16 +3,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
 import java.util.StringTokenizer;
+
 
 class Point{
 	int y;
 	int x;
-	
 	public Point(int y, int x) {
 		super();
 		this.y = y;
@@ -23,60 +26,52 @@ class Point{
 public class Main {
 	
 
-	static int[] dy = {-1,0,1};
-	static int by,bx, cnt;
-	static String map[][];
-	static boolean visit[][];
-	static boolean vvisit[][];
-	static StringBuffer sb = new StringBuffer();
-	static Queue<Point> que = new LinkedList<Point>();
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		by = Integer.parseInt(st.nextToken());
-		bx = Integer.parseInt(st.nextToken());
-		map = new String[by][bx];
-		vvisit = new boolean[by][bx];
-		for(int i = 0; i < by; i++) 
+
+		
+		int n = Integer.parseInt(br.readLine());
+		int dx[] = {0,0,1,-1};
+		int dy[] = {1,-1,0,0};
+		String map[][] = new String [n][n];
+		boolean visit[][] = new boolean[n][n];
+		for(int i = 0 ; i < n ; i++) {
 			map[i] = br.readLine().split("");
-		
-		for(int i = 0; i < by; i++) {
-			visit = new boolean[by][bx];
-			play(i,0);
-			if(true) System.out.println(1);
 		}
-		
-		
-		System.out.println(cnt);
-	}
-	private static void play(int y, int x) {
-		if(x == bx-1) {
-			visit[y][x] = true;
-			cnt++;
-			
-			for(int i = 0; i < by; i++) {
-				for(int j = 0; j < bx; j++) {
-					if(visit[i][j])vvisit[i][j]= true;
+		ArrayList<Integer> a = new ArrayList<>();
+		for(int i = 0 ; i < n ; i++) {
+			for (int j = 0 ; j < n; j++) {
+				if(visit[i][j])continue;
+				if(map[i][j].equals("0"))continue;
+				int cnt = 1;
+				Queue<Point> arr = new LinkedList<>();
+				arr.add(new Point(i,j));
+				visit[i][j] = true;
+				while(!arr.isEmpty()) {
+					cnt++;
+					int x = arr.peek().x;
+					int y = arr.poll().y;
+					for(int d = 0 ; d < 4; d++) {
+						int nx = x + dx[d];
+						int ny = y + dy[d];
+						if( nx < 0 || ny < 0 || nx >= n || ny >= n)continue;
+						if(map[ny][nx].equals("0") || visit[ny][nx]) continue;
+						
+						visit[ny][nx] = true;
+						arr.add(new Point(ny,nx));
+						
+					}
 					
 				}
+				a.add(cnt);
 			}
-			return;
 		}
 		
-		for(int i = 0; i < 3; i++) {
-			int nx = x + 1;
-			int ny = y + dy[i];
-			
-			if(nx < 0 || ny < 0 || nx >= bx || ny >= by) return;
-			if(vvisit[ny][nx] || visit[ny][nx])return;
-			if(map[ny][nx].equals("x"))return;
-			visit[ny][nx] = true;
-			play(ny,nx);
-			visit[ny][nx]=false;
-		}
-		
-			
-		
-		
+		Collections.sort(a);
+		System.out.println(a.size());
+		for(int i = 0; i < a.size(); i++)System.out.println(a.get(i));
 	}
+	
+
 }

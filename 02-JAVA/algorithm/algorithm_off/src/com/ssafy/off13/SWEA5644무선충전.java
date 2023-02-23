@@ -1,3 +1,4 @@
+package com.ssafy.off13;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,22 +20,22 @@ class Data {
 	}
 
 }
-//
-//class Point {
-//	int y;
-//	int x;
-//	int dis;
-//
-//	public Point(int y, int x, int dis) {
-//		super();
-//		this.y = y;
-//		this.x = x;
-//		this.dis = dis;
-//	}
-//
-//}
 
-public class Solution {
+class Point {
+	int y;
+	int x;
+	int dis;
+
+	public Point(int y, int x, int dis) {
+		super();
+		this.y = y;
+		this.x = x;
+		this.dis = dis;
+	}
+
+}
+
+public class SWEA5644무선충전 {
 	static int pN, mN;
 	static int dir1[], dir2[];
 	static int map[][][];

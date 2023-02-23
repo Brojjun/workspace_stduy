@@ -17,7 +17,7 @@ class Car{
 	int x;
 	int dir;
 }
-public class SWEA_1873_상호의배틀필드 {
+public class 정형준_SWEA_1873_상호의배틀필드 {
 	static int by, bx, bc, answer;
 	static String[][] map;
 	static String[] move;
