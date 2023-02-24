@@ -1,3 +1,4 @@
+package com.ssafy.off15;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,7 +27,7 @@ class Cam{
 	}
 	
 }
-public class Main {
+public class BOJ15683_CCTV {
 	
 	
 	static int by, bx;

@@ -21,12 +21,12 @@ class Data {
 
 }
 
-class Point {
+class Charge {
 	int y;
 	int x;
 	int dis;
 
-	public Point(int y, int x, int dis) {
+	public Charge(int y, int x, int dis) {
 		super();
 		this.y = y;
 		this.x = x;
@@ -72,8 +72,8 @@ public class SWEA5644무선충전 {
 				int y = Integer.parseInt(st.nextToken());
 				int range = Integer.parseInt(st.nextToken());
 				int power = Integer.parseInt(st.nextToken());
-				Queue<Point> que = new LinkedList<Point>();
-				que.add(new Point(y, x, 0));
+				Queue<Charge> que = new LinkedList<Charge>();
+				que.add(new Charge(y, x, 0));
 				map[y][x][i] = power;
 				// 배터리 영역 체크
 				while (!que.isEmpty() && que.peek().dis < range) {
@@ -91,7 +91,7 @@ public class SWEA5644무선충전 {
 						if (ny <= 0 || nx <= 0 || ny > 10 || nx > 10)
 							continue;
 						map[ny][nx][i] = power;
-						que.add(new Point(ny, nx, nd));
+						que.add(new Charge(ny, nx, nd));
 					}
 				}
 
