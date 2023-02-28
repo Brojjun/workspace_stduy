@@ -1,4 +1,4 @@
-package com.ssafy.live012;
+package com.ssafy.live12;
 
 import java.util.Scanner;
 

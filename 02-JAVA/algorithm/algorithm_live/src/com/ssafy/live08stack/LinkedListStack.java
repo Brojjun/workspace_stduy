@@ -1,4 +1,4 @@
-package stack;
+package com.ssafy.live08stack;
 
 public class LinkedListStack<T> implements IStack1<T> {
 

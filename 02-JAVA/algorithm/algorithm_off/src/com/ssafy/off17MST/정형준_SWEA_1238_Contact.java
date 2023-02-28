@@ -1,3 +1,4 @@
+package com.ssafy.off17MST;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +9,7 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class Solution {
+public class 정형준_SWEA_1238_Contact {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		for(int test = 1; test <= 10; test++) 
