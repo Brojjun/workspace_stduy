@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn_area,
+        #list {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn_area">
+        <!-- inline -->
+        <button id = "bnt1" onclick="doAction01()"> Click1</button>
+        <button id='btn2'> Click2</button>
+        <button id='btn3'> Click3</button>
+    </div>
+    <div id="list"></div>
+
+    <script>
+    let btn3 = document.getElementById("btn3");
+    btn3.addEventListener('click', function(e){
+        console.dir(e);
+        console.dir(e.target); //이벤트가 발생한 대상객체
+        console.dir(e.target.innerHTML); //이벤트가 발생한 대상객체
+        e.target.innerText = "클릭3";
+    });
+
+    let btn2 = document.getElementById('btn2');
+    btn2.onclick = function(){
+        alert('doAciton - 2');
+    };
+
+    function doAction01(){
+        alert('doAction')
+    }
+    
+    </script>
+</body>
+</html>

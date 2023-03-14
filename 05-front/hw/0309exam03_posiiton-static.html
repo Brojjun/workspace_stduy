@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="0309exam03_posiiton.css">
+    <style>
+        /* 
+            position : static, relative, absolute, fixed, sticky
+            기본 : static (좌표 안됨)
+            좌표를 이용해서 위치를 지정
+            - top, left, right, bottom
+        */
+        .pos1 {
+            top: 100px;
+            left: 100px;
+            /*
+                position이 static으로 기본 설정 되어있어서, 
+                좌표 적용이 안되고 있다.
+            */
+        }
+    </style>
+</head>
+<body>
+    <h1>위</h1>
+    <div class="parent">
+        <div class="pos1">1</div>
+        <div class="pos2">2</div>
+        <div class="pos3">3</div>
+    </div>
+    <h1>아래</h1>
+</body>
+</html>

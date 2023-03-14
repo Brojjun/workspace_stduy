@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+                                 100    10              1
+            !important > inline > id > class, [class] > element
+            11 > 10 이다.
+        */
+        #a {
+            /* background-color: thistle; */
+        }
+        p[class] { /* element + 속성 선택자 */
+            background-color: yellowgreen;
+        }
+        b {
+            background-color: bisque;
+        }
+        p {
+            /* background-color: aqua !important; */
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div>연습</div>
+    <div>
+        <!-- <p id="a" class="b" style="background-color: red;">우선순위 테스트</p> -->
+        <p id="a" class="b">우선순위 테스트</p>
+    </div>
+</body>
+</html>

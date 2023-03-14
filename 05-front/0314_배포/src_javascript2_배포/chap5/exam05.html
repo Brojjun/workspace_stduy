@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box--line{
+            border:3px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="addBtn">추가</button>
+        <div id="list">
+            <!-- 
+            <div class=""box--line>
+                <p>삭제 연습</p>
+                <button>삭제</button>
+            </div>
+        -->
+        </div>
+    </div>
+
+    <script>
+    let $ = document.getElementById;
+    let cnt = 0;
+    let addBtn = $("addBtn");
+    //let addBtn = document.getElementById("addBtn");
+    addBtn.addEventListener("click", function(){
+        let divEl = document.createElement('div');
+        //divEl.class = 'box--line'; //X
+        // divEl.className = "box--line";// O
+        // divEl['class']='box--line'; // O
+        // divEl['className']='box--line';  // X
+        divEl.setAttribute("class", "box--line");
+        divEl.innerHTML = `
+        <p>삭제 연습</p>
+        <button onclick="doDel(this)">삭제${++cnt}</button>
+        `; 
+        // divEl.setAttribute('class', 'box--line'); // O
+        document.getElementById('list').appendChild(divEl);
+    
+        
+    })
+    function doDel(_this){
+        _this.parentNode.remove();
+        //_this.parentNode.parentNode.removeChild(_this.parentNode);
+        console.dir(_this);
+    };
+    // let doDel = function(){};
+    // let doDel = ()=>{};
+    </script>
+</body>
+</html>

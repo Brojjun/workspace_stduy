@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error{
+            background: red;
+            color :white;
+        }
+    </style>
+</head>
+<body>
+    <form action="/servlet/hello" onsubmit="return checkInput()">
+        <input id = "id" name="id" />
+        <button type="submit">확인</button>
+        <span id="errMsg"></span>
+    </form>
+
+    <form id="idFrom" action="/servlet/hello" onsubmit="return checkInput()">
+        <input id = "id2" name="id" />
+        <button type="submit">확인</button>
+        <span id="errMsg2"></span>
+    </form>
+
+
+
+    <script>
+        let idForm = document.getElementById("idForm");
+        idForm.onsubmit = function(e){
+            e.preventDefault();// submit이 멈춤
+            
+            let idEl = document.getElementById("id2");
+
+            if (idEl.value.trim().length !== 0){
+                idForm.submit();
+            }
+                
+            
+            alert("form의 입력 체크");
+        }
+
+
+        let idEl = document.getElementById("id");
+        idEl.addEventListener('keyup', function(e){
+            //e.target.
+            if(idEl.value.trim().length > 0){
+                document.getElementById('errMsg').innerText = '';
+            }
+        });
+        function checkInput(){
+            //alert('submit 시 호출');
+            // id input 창에 값이 입력된 경우 전송, 입력값이 없는 경우 전송 XX
+
+            let idEl = document.getElementById("id");
+            if(idEl.value.trim().length == 0){
+                let errMsg = document.getElementById("errMsg");
+                errMsg.innerText = "내용을 입력해 야발!!";
+                errMsg.setAttribute("class","error");
+                return false;
+            } 
+            return true;
+        }
+    </script>
+</body>
+</html>

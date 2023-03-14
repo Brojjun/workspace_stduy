@@ -1,0 +1,9 @@
+.form {
+    border: 3px solid aqua;
+    border-radius: 10%;
+    padding: 10px;
+}
+article {
+    width: 1400px;
+    height: 184px;
+}

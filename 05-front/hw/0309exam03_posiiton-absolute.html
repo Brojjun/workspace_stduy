@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="0309exam03_posiiton.css">
+    <style>
+        body {
+            min-height: 2000px;
+        }
+        /* 
+            position : static, relative, absolute, fixed, sticky
+            
+            absolute : 
+            자신의 상위의 element 중에서
+            좌표 기준 설정이 되어있는 element를 찾아서 기준으로 삼는다.
+            
+            그래서 부모 element로 relative로 여기저기 움직여주면,
+            내부의 absolute으로 설정된 자식 element들도 그 내부에서 같이 움직인다.
+        */
+        .pos1 {
+            position: fixed;
+            top: calc(50% - 100px);
+            left: calc(50% - 100px);
+            width: 200px;
+            height: 300px;
+            background-color: #fff;
+
+        }
+        .pos1 > button {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background-color: black;
+            color: #fff;
+            font-weight: 900;
+        }
+        .pos1 > button:hover {
+            background-color: red;
+            cursor: pointer;
+            border: 2px solid red;
+        }
+        .pos2 {
+            bottom: 5px;
+            right: 5px;
+            position: absolute;
+            width: 20px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>위</h1>
+    <div class="parent">
+        <div class="pos1">1<button onclick="posHide()">X</button> </div>
+        <div class="pos2">2</div>
+        <div class="pos3">3</div>
+    </div>
+    <h1>아래</h1>
+    <script>
+        function posHide() {
+            document.querySelector(".pos1").style.display = 'none';
+        }
+    </script>
+</body>
+</html>

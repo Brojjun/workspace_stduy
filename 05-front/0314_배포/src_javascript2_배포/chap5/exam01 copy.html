@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn_area,
+        #list {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn_area">
+        <!-- inline -->
+        <button id="addBtn" onclick="addH2()"> Click</button>
+        <button id="addBtn2"> Click2</button>
+        <button id="addBtn3"> Click3</button>
+    </div>
+    <div id="list"></div>
+
+    <script>
+        let btn2 = document.getElementById("addBtn2");
+        btn2.onclick = function () {
+            let listEle = document.getElementById("list")
+            listEle.innerHTML += "<h2>추가</h2>"; // div아래의 모든 HTML태그가 갱신된다.
+        };
+        
+        
+        let btn3 = document.getElementById("addBtn3");
+        btn3.addEventListener("click", addH2);
+
+        
+        /*
+            document.createElement
+            document.createTextNode
+            appendChild
+            innerHTML
+            innerT
+
+            이벤트 설정 방식
+            - 인라인(element에 입력)
+            - 프로퍼티 : on 이벤트 타입
+            - 메서드 : addEventListener()
+        */
+        // 버튼이 눌릴 때, h2를 생성해서 #list div에 추가한다.
+        function addH2() {
+            let divEle = document.createElement("div");
+            divEle.innerHTML = "<input />";
+
+            /*
+            let inputEle = document.createElement("input");
+            divEle.appendChild(inputEle);
+            */
+            let listEle = document.getElementById("list");
+            listEle.appendChild(divEle);
+
+            //1.
+            // let h2Ele = document.createElement("h2");  //document 안에 있는 createElement 메소드
+            // let h2Text = document.createTextNode("추가");  //document 안에 있는 createTextNode 메소드
+            // h2Ele.appendChild(h2Text);
+            // let listEle = document.getElementById("list")
+            // listEle.appendChild(h2Ele)
+            /*
+                <h2></h2>
+                let h2Ele = document.createElement("h2");  //document 안에 있는 createElement 메소드
+                
+                "추가"
+                let h2Text = document.createTextNode("추가");  //document 안에 있는 createTextNode 메소드
+                
+                <h2>추가</h2>
+                h2Ele.appendChild(h2Text);
+                ------------------------------------------------
+                let listEle = document.getElementById("list")
+                document.querySelector("#list")
+
+                listEle.appendChild(h2Ele)
+            */
+        }
+    </script>
+</body>
+</html>

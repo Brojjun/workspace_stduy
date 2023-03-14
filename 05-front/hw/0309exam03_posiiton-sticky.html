@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            position : static, relative, absolute, fixed, sticky
+            
+            sticky : 
+            sticky로 설정한 공간이 스크롤을 내려도 고정된다.
+        */
+        * {
+            margin: 0;
+        }
+        body {
+            font-size: 20px;
+        }
+        .container {
+            width: 800px;
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+        header{
+            position: sticky;
+            top: 0;
+            height: 100px;
+            border: 1px solid #000;
+        }
+        header > ul > li {
+            list-style: none;
+            display: inline-block;
+            width: 200px;
+            height: 30px;
+            border: 1px solid #000;
+        }
+        .box {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <ul>
+                <li>아침 메뉴</li>
+                <li>점심 메뉴</li>
+                <li>저녁 메뉴</li>
+            </ul>
+        </header>
+        <div class="content">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclicl="doAdd()">추가</button>
+    <div id="a">id a</div>
+<div class="b" name="c">class b1</div>
+<div class="b">class b2</div>
+<div class="b" name="c">class b3</div>
+    <script>
+
+
+        //let ele = document.getElementById("a");
+        //ele.innerText += " selected";
+
+        // let ele = document.getElementsByName("c");
+        // ele = document.getElementsByTagName('div');
+        // ele = document.getElementsByClassName("b");
+        // for(let e of ele){
+        //     e.innerText += " selected";
+        // }
+      
+        let ele = document.querySelectorAll('[name=c]');
+        for(let e of ele)e.innerText += " selected";
+        // let ele = document.querySelector('#a');
+        // ele.innerText += ' selected';
+          /*
+        조회
+        document.getElementById;
+        document.getElementsByName;
+        document.getElementsByTagName;
+        document.getElementsByClassName;
+
+        document.querySelector
+        document.querySelectorAll
+
+        생성
+        document.createElement
+        document.createTextNode
+
+        추가
+        appendChild
+        append
+
+        삭제
+        부모객체.removeChild(삭제할자식객체)
+        삭제할객체.remove
+
+        속성
+        객체.속성명 = 값;
+        객체["속성명"] = 값;
+        객체.setAttribute("속성명",값); // 사용자 정의 속성
+
+        속성 값 가져오기
+        객체.속성명
+        객체["속성명"]
+        객체.getAttribute("속성명");
+        
+        Event
+        인라인이벤트 = 엘리먼트 설정
+        ->콜백함수의 첫번째 인자에 이벤트객체가 넘어온다.
+        ->e.target으로 이벤트 발생 객체를 얻어온다.
+        프로퍼티 설정(on이벤트타입명)
+        메서드 설정(addEventListner)
+
+
+        */
+    </script>
+</body>
+</html>

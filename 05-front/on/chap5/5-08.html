@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pseudo-classes Selector(가상클래스선택자)</title>
+
+    <style type="text/css">
+      li:nth-child(5) {
+        color: magenta;
+      }
+      li:last-child, ul > li:first-child {
+        /* "ul >" 로 태그를 상세하게 알려주니, 우선순위가 높아졌다. */
+        color: orange;
+      }
+      /* 밑에 있는 선택자가 위에 있는 것을 덮어쓴다. */
+      li:nth-child(3n + 1) {
+        color: skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>첫 번째 li</li>
+      <li>두 번째 li</li>
+      <li>세 번째 li</li>
+      <li>네 번째 li</li>
+      <li>다섯 번째 li</li>
+      <li>여섯 번째 li</li>
+      <li>일곱 번째 li</li>
+      <li>여덟 번째 li</li>
+    </ul>
+  </body>
+</html>

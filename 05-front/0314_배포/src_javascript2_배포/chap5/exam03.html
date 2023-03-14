@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="doAdd()">추가</button>
+    <div id="list"></div>
+    <script>
+        function ddoo(){
+            let member1 = {};
+            let member2 = new Object;
+
+            member1.email = "aa@aa.com";
+            member1['home-page'] = 'www.naver.com';
+            member1.setAttributer = 'www.naver.com'
+        };
+
+        function doAdd(){
+            let imgEle = document.createElement('img');
+            imgEle.src = "profile.png";
+            imgEle.width = 50;
+            imgEle.msg="사용자 추가속성";
+            imgEle.setAttribute('data-msg1','추가속성');
+            console.dir(imgEle.dataset.msg1);
+            document.getElementById("list").appendChild(imgEle);
+
+        };
+    </script>
+    
+</body>
+</html>
