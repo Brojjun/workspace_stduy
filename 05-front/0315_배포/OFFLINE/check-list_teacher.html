@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      ul {
+        list-style: none;
+        margin: 20px;
+        width: 120px;
+        height: 150px;
+        float: left;
+        background-color: #d1e0ff;
+      }
+
+      li {
+        width: 120px;
+        height: 30px;
+        padding: 2px;
+      }
+
+      #result {
+        float: left;
+        border: 5px solid tomato;
+        margin-top: 20px;
+        width: 500px;
+        height: 60px;
+        box-sizing: border-box;
+        line-height: 50px;
+      }
+
+      span {
+        padding-left: 10px;
+      }
+
+      .close {
+        margin-left: 2px;
+        vertical-align: text-bottom;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul>
+        <li>
+          <label>
+            <input type="checkbox" id="1" value="JAVA" onclick="doAction(this)" />
+            JAVA</label
+          >
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="2" value="SQL" onclick="doAction(this)" />
+            SQL</label
+          >
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="3" value="HTML" onclick="doAction(this)" />
+            HTML</label
+          >
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="4" value="CSS" onclick="doAction(this)" />
+            CSS</label
+          >
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="5" value="JAVASCRIPT" onclick="doAction(this)" />
+            JAVASCRIPT</label
+          >
+        </li>
+      </ul>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function doAction(ckEl) {
+        // console.log(ckEl.checked, ckEl.value, ckEl.id);
+        if (ckEl.checked) {
+          // id result 추가
+          add(ckEl);
+        } else {
+          // id result 삭제
+          del(ckEl.id);
+        }
+      }
+      function add(ckEl) {
+        let resultEl = document.getElementById('result');
+        let spanEl = document.createElement('span');
+        spanEl.setAttribute('id', `s_${ckEl.id}`);
+        spanEl.innerHTML = `
+          ${ckEl.value}
+          <button class="close" onclick="allDel(${ckEl.id})">
+            X
+          </button>
+        `;
+        resultEl.appendChild(spanEl);
+      }
+      function del(id) {
+        document.getElementById('s_' + id).remove();
+      }
+      function allDel(id) {
+        del(id);
+        document.getElementById(id).checked = false;
+      }
+    </script>
+  </body>
+</html>

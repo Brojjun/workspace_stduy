@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      #result{
+        border: 3px solid orange;
+        width: 600px;
+        height: 100px;
+        margin: 15px;
+      }
+      .container {
+        margin: 10px;
+        display: flex;
+      }
+      ul {
+        background-color: gray;
+        list-style: none;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul>
+        <li>
+          <label>
+            <input type="checkbox" id="1" value="JAVA" />
+            JAVA</label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="2" value="SQL" />
+            SQL</label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="3" value="HTML" />
+            HTML</label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="4" value="CSS" />
+            CSS</label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="5" value="JAVASCRIPT" />JAVASCRIPT</label>
+        </li>
+      </ul>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      let resultbox = document.getElementById('result');
+      let boxlist = document.querySelectorAll("input");
+      let cnt = 0;
+      boxlist.forEach((box)=>{
+        box.addEventListener("change", function(e){
+          if(e.target.checked == true){
+            resultbox.innerHTML += `
+              <span id="result${e.target.id}">
+              <span>${e.target.value}</span>
+              <button onclick="doDel(this)">X</button></span>
+            `; 
+          }
+          else{
+            e.target
+            doDel();
+            }})
+          }
+        )
+      function doDel(_this){
+              _this.parentNode.remove();
+              //_this.parentNode.parentNode.removeChild(_this);
+              console.dir(_this);
+          };
+
+
+    </script>
+        <!-- <script>
+          let $ = document.getElementById;
+          let cnt = 0;
+          let addBtn = $("addBtn");
+          //let addBtn = document.getElementById("addBtn");
+          addBtn.addEventListener("click", function(){
+              let divEl = document.createElement('div');
+              //divEl.class = 'box--line'; //X
+              // divEl.className = "box--line";// O
+              // divEl['class']='box--line'; // O
+              // divEl['className']='box--line';  // X
+              divEl.setAttribute("class", "box--line");
+              divEl.innerHTML = `
+              <p>삭제 연습</p>
+              <button onclick="doDel(this)">삭제${++cnt}</button>
+              `; 
+              // divEl.setAttribute('class', 'box--line'); // O
+              document.getElementById('list').appendChild(divEl);
+          
+              
+          })
+          function doDel(_this){
+              _this.parentNode.remove();
+              //_this.parentNode.parentNode.removeChild(_this.parentNode);
+              console.dir(_this);
+          };
+          // let doDel = function(){};
+          // let doDel = ()=>{};
+          </script> -->
+  </body>
+</html>

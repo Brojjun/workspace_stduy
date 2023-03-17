@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul{
+            list-style: none;
+        }
+        ul > li{
+            margin: 1.2rem;
+            background-color: #321;
+            width: 200px;
+            padding: 1.2rem;
+            color: whitesmoke;
+            font-weight: bold;
+            border-radius: 4px;
+            box-shadow: 0 0 5px 5px #123;
+        }
+        a{
+            text-decoration: none;
+            color:aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">회원정보가져오기</button>
+    <div id="memberList">
+        <ul id="memberUl"></ul>
+    </div>
+    <script>
+        let btn = document.getElementById("btn");
+        btn.addEventListener("click",() =>{
+            //member.txt파일을 가져온다. + 비동기적으로 깜빡임 없이 -> ajax ㄱㄱ
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = () => {
+                if(xhr.readyState === 4 && xhr.status == 200){
+                    let members = JSON.parse(xhr.responseText);
+                    let html = "";
+                    for(let i = 0 ; i < members.length; i++){
+                        let m = members[i];
+                        html += `
+                                <li>
+                                    <span>
+                                        <a href="">${m.id}</a>
+                                    </span>
+                                        <span>${m.name}</span>
+                                </li>
+                        
+                        `;
+                        console.log(html);
+                    }
+                    document.getElementById("memberUl").innerHTML += html;
+                }
+                
+                
+            };
+            xhr.open("GET", "member.txt");
+            xhr.send();
+            
+        })
+    </script>
+    
+</body>
+</html>

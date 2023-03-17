@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        //Ajax는 비동기로 처리하기 위해서 주로 쓴다.
+        let xhr = new XMLHttpRequest(); // 객체생성
+        xhr.onreadystatechange = function(){ // 응답이 오면 콜백 => 비 동기이다. 오면 처리한다.
+            if(xhr.readyState === 4 && xhr.status == 200){
+                //데이터가 다 오면 처리 시작
+                //xhr.responseText // 응답결과
+
+            }else{
+                //처리중 이미지...
+            }
+        };
+        //요청 (get, post, delete, updata)
+        //
+        //xhr.open("요청방식(GET,POST,PUT,DELETE,PATCH)","URL?QueryString","동기or비동기"); //비동기 디포트
+        xhr.open("GET","/idcheck?id=a");
+
+        //전송
+        xhr.send();
+
+        //post방식일시 바디에 추가할 정보를 인자로 넣는다.
+        //xhr.send("id=a");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
