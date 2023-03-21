@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ssafy-boardd">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <property name="context-root" value="ssafy-boardd"/>
+        <property name="java-output-path" value="/ssafy-boardd/build/classes"/>
+    </wb-module>
+</project-modules>

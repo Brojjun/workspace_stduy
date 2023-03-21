@@ -3,24 +3,24 @@ window.onload = function () {
   // 비동기 통신을 위해 새로운 xmlhttp 요청 생성
   const xhr = new XMLHttpRequest();
   // 요청 method
-  const method = xhr.se;
+  const method = "GET";
   // 파일 위치
-  const url = "./css/main.css";
+  const url = "./user.json";
 
   // 위의 method 와 url 로 비동기 요청 초기화
-  xhr._________;
+  xhr.open(url,method);
   // 요청 헤더 설정
-  xhr.______________("Content-Type", "application/text");
+  xhr.setRequestHeader("Content-Type", "application/text");
   // 요청 동작 설정
-  xhr._______________ = function () {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState === xhr.DONE) {
       // 요청 상태가 OK 이면
-      if (xhr.______ === ______) {
+      if (xhr.status === 200) {
         // Json 객체 형태로 응답 받기
         const resJson = JSON.parse(xhr.responseText);
         const userData = resJson.users;
         // 자동차 data 삽입할 html 요소 찾기
-        let userList = document.querySelector("________________");
+        let userList = document.querySelector(".content-user-list-ul");
         for (let i = 0; i < userData.length; i++) {
           let carItem = `
             <li>
@@ -46,7 +46,7 @@ window.onload = function () {
   };
 
   // 요청 보내기
-  xhr.__________;
+  xhr.send();
 };
 
 function regist() {
