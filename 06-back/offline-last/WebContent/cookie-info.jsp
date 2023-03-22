@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    Cookie[] cookies = request.getCookies();
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +10,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%! String msg = "aaa"; %>
-	<%!
-		msg = "local";
-		public int sum(int i, int j){
-		return i + j;
+<% 
+	if(cookies != null){
+		for(Cookie c : cookies){
+%>
+			<h2>쿠키 이름 : <%=c.getName()%>, 값 : <%=c.getValue()%></h2>
+<% 
+		}
 	}
-	%>
-
-
+%>
 </body>
 </html>
