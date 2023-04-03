@@ -1,37 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<%@ include file="/include/head.jsp" %>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Enjoy_trip_with_servlet/css/board.css" />
+    <title>Document</title>
 </head>
 <body>
-	<%@ include file="/include/nav.jsp" %>
 
-	<%-- 페이지만의 내용 --%>
-	<div class="container p-4">
+	<%@ include file="../include/header.jsp" %>
 	
-	  <h2>상품 정보</h2>	
-	    <div class="form-group">
-	      <label for="productCode">고유번호</label>
-	      <div>${product.code}</div>
-	    </div>
-	    
-	    <div class="form-group">
-	      <label for="model">모델명</label>
-	     <div>${product.model}</div>
-	    </div>
-	    
-	    <div class="form-group">
-	      <label for="price">가격</label>
-	      <div>${product.price}</div>
-	    </div>
+	
+    <div id = "contenBox">
+    <br>
+    <br>
+    	<table>
+    		<tr>
+    		<th colspan="5"><h1>${board.title}</h1></th>
+    		</tr>
+    		<tr>
+    			<th>작성자 : ${board.writer}</th>
+    			<th></th>
+    			<th></th>
+    			<th>게시일 : ${board.createDate}</th>
+    			<th>조회수 : ${board.viewCount}</th>
+    		</tr>
+    		<tr>
+    		<td><br></td>
+    		</tr>
+    		<tr rowspan="5">
+    			<td colspan="5">${board.content}</td>
+    		</tr>
+    	</table>
+    	<br>
+    	<br>
+    	<br>
+    </div>
+    <a href="${root}/board?action=list"><button>목록</button></a>
+    <a href="${root}/board?action=modifyForm&no=${board.no}"><button>수정</button></a>
+    <a href="${root}/board?action=delete&no=${board.no}"><button>삭제</button></a>
 
-	    <a class="btn btn-secondary" href="${root}/product?action=delete" >삭제</a>
-	    <a class="btn btn-secondary" href="${root}/product?action=list" >목록</a>
-	  
-	
-	
-	</div>
-	<%-- --%>
-<%@ include file="/include/footer.jsp" %>
+    
+    <%@ include file="../include/footer.jsp" %>
+        
+</body>
+</html>
+    

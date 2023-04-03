@@ -30,7 +30,7 @@ public class BoardController extends HttpServlet {
 	private String key;
 	private String word;
 	private String queryStrig;
-	
+
 	private BoardService boardService;
 
 	@Override
@@ -42,7 +42,7 @@ public class BoardController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-		
+
 		pgno = ParameterCheck.notNumberToOne(request.getParameter("pgno"));
 		key = ParameterCheck.nullToBlank(request.getParameter("key"));
 		word = ParameterCheck.nullToBlank(request.getParameter("word"));
@@ -100,10 +100,10 @@ public class BoardController extends HttpServlet {
 				map.put("pgno", pgno + "");
 				map.put("key", key);
 				map.put("word", word);
-				
+
 				List<BoardDto> list = boardService.listArticle(map);
 				request.setAttribute("articles", list);
-				
+
 				PageNavigation pageNavigation = boardService.makePageNavigation(map);
 				request.setAttribute("navigation", pageNavigation);
 
@@ -163,11 +163,11 @@ public class BoardController extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			MemberDto memberDto = (MemberDto) session.getAttribute("userinfo");
-			if(memberDto != null) {
+			if (memberDto != null) {
 				int articleNo = Integer.parseInt(request.getParameter("articleno"));
 				BoardDto boardDto = boardService.getArticle(articleNo);
 				request.setAttribute("article", boardDto);
-				
+
 				return "/board/modify.jsp";
 			} else
 				return "/user/login.jsp";
@@ -184,12 +184,12 @@ public class BoardController extends HttpServlet {
 		// TODO : 글수정 완료 후 view.jsp로 이동.(이후의 프로세스를 생각해 보세요.)
 		HttpSession session = request.getSession();
 		MemberDto memberDto = (MemberDto) session.getAttribute("userinfo");
-		if(memberDto != null) {
+		if (memberDto != null) {
 			BoardDto boardDto = new BoardDto();
 			boardDto.setArticleNo(Integer.parseInt(request.getParameter("articleno")));
 			boardDto.setSubject(request.getParameter("subject"));
 			boardDto.setContent(request.getParameter("content"));
-			
+
 			try {
 				boardService.modifyArticle(boardDto);
 				return "/article?action=list&pgno=1&key=&word=";
@@ -198,7 +198,7 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("msg", "글수정 중 문제 발생!!!");
 				return "/error/error.jsp";
 			}
-			
+
 		} else
 			return "/user/login.jsp";
 	}
@@ -209,9 +209,9 @@ public class BoardController extends HttpServlet {
 		// TODO : 글삭제 완료 후 list.jsp로 이동.(이후의 프로세스를 생각해 보세요.)
 		HttpSession session = request.getSession();
 		MemberDto memberDto = (MemberDto) session.getAttribute("userinfo");
-		if(memberDto != null) {
+		if (memberDto != null) {
 			int articleNo = Integer.parseInt(request.getParameter("articleno"));
-			
+
 			try {
 				boardService.deleteArticle(articleNo);
 				return "/article?action=list&pgno=1&key=&word=";
@@ -220,7 +220,7 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("msg", "글삭제 중 문제 발생!!!");
 				return "/error/error.jsp";
 			}
-			
+
 		} else
 			return "/user/login.jsp";
 	}
