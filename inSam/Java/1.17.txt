@@ -8,7 +8,7 @@ jvm의 메모리 구조{
 	=>clasee area : 클래스 원형 로딩 ( 운영체제에서 메모리 영역을 말하는 듯? ) 
 		class코드가 class area에 올라가는 시기 : 처음 사용될 때(class loading)
 		static은 class영역이고, this는 heap영역의 instance주소로 가는 것이기 때문에 static은 this 사용하지마
-		->무조건 class이름. 으로 접근
+		`->무조건 class이름. 으로 접근
 
 	=>method stack : thread 별로 별도 관리 / 로컬변수, 매서드 호출 순서 쌓임 ( 정형적인 stack )
 
