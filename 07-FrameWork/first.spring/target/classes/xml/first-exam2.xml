@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- boardController -->
+	<bean id="boardController" class="com.ssafy.first.xml.controller.BoardController">
+		<!-- setController()   ->  1. set 제거  2. 대문자를 소문자로  Controller = controller -->
+		<property name="controller">
+			<ref bean="boardService" />
+		</property>
+	</bean>
+
+
+	<!-- boardService -->
+	<!-- -->
+<!-- 	<bean id="boardService"
+		class="com.ssafy.first.xml.model.service.BoardServiceImpl"
+		c:boardDao-ref="boardDao" />
+ -->
+ 	<bean id="boardService" class="com.ssafy.first.xml.model.service.BoardServiceImpl"/>
+
+	<!-- BoardDao -->
+	
+	<bean id="boardDao" class="com.ssafy.first.xml.model.service.Dao.BoardDaoImpl" 
+	/>
+<!-- 	<bean id="boardDao" class="com.ssafy.first.xml.model.service.Dao.BoardDaoImpl">
+		<constructor-arg><ref bean="board"/></constructor-arg>
+	</bean> -->
+	
+
+</beans>
