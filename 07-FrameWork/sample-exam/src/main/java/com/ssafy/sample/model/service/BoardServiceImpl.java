@@ -44,7 +44,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void deleteAll(List<Integer>no) throws Exception {
-		if(no.size() == 0)return;
+		if(no.size() == 0)return;	
 		for(int num : no)
 			boardDao.deleteAll(num);
 		
