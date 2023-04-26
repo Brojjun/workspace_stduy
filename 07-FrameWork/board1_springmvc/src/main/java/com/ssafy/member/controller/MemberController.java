@@ -37,7 +37,7 @@ public class MemberController {
 	@PostMapping("/login")
 	public String login(HttpSession session,Model model, @RequestParam("userid") String userId, @RequestParam("userpwd") String userPwd) throws Exception {
 		MemberDto memberDto = memberService.loginMember(userId, userPwd);
-		if(memberDto != nul	l) {
+		if(memberDto != null) {
 			session.setAttribute("userinfo", memberDto);
 			return "rediect:/";
 		}else {
