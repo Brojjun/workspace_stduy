@@ -7,13 +7,14 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
+import com.ssafy.
 public class SqlMapConfig {
 
 	private static SqlSessionFactory factory;
 
 	static {
 		try {
+			
 			String resource = "com/ssafy/mybatis/mybatis-config.xml";
 			Reader reader = Resources.getResourceAsReader(resource);
 			factory = new SqlSessionFactoryBuilder().build(reader);

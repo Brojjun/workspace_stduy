@@ -18,6 +18,18 @@
 		<collection property="fileInfos" column="article_no" javaType="list" ofType="fileInfoDto" select="fileInfoList"/>
 	</resultMap>
 	
+	
+	<select id="listArticle" parameterType="map" resultMap="article">
+		select b.article_no, b.user_id, b.subject, b.content, b.hit, b.register_time, m.user_name
+		from board b, members m 
+		where b.user_id = m.user_id
+		<include refid="search"></include>
+		order by b.article_no desc
+		limit #{start}, #{listsize}
+	</select>
+	
+	
+	
 	<resultMap type="fileInfoDto" id="file">
 		<result column="save_folder" property="saveFolder"/>
 		<result column="original_file" property="originalFile"/>
@@ -51,15 +63,7 @@
 		</if>
 	</sql>
 
-	<select id="listArticle" parameterType="map" resultMap="article">
-		select b.article_no, b.user_id, b.subject, b.content, b.hit, b.register_time, m.user_name
-		from board b, members m 
-		where b.user_id = m.user_id
-		<include refid="search"></include>
-		order by b.article_no desc
-		limit #{start}, #{listsize}
-	</select>
-	
+
 	<select id="getTotalArticleCount" parameterType="map" resultType="int">
 		select count(article_no)
 		from board

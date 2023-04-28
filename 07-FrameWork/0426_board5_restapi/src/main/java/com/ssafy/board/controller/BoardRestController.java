@@ -29,6 +29,7 @@ public class BoardRestController {
 		this.boardService = boardService;
 	}
 	
+	
 	@DeleteMapping("{articleNo}/{commentNo}")
 	public List<Comment> deleteComment(@PathVariable int articleNo, @PathVariable int commentNo){
 		boardService.deleteComment(commentNo);
