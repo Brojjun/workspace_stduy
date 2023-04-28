@@ -87,15 +87,15 @@
     </div>
     
     <div class="row">
-    	<div>
-    		<input type = "text" name="user_id" value="${userinfo.userId}" readonly />
-    	</div>
-    	<div>
-    		<textarea id="content" rows = "5" cols="80"></textarea>
-    	</div>
-    	<div>
-    		<button id="commentRegBtn">등록</button>
-    	</div>
+	    	<div>
+	    		<input type = "text" name="user_id" value="${userinfo.userId}" readonly />
+	    	</div>
+	    	<div>
+	    		<textarea id="content" rows = "5" cols="80"></textarea>
+	    	</div>
+	    	<div>
+	    		<button id="commentRegBtn">등록</button>
+	    	</div>
     </div>
     
     <div>
