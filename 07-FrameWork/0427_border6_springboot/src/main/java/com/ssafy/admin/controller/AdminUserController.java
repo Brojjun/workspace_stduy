@@ -23,10 +23,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ssafy.member.model.MemberDto;
 import com.ssafy.member.model.service.MemberService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 //@RestController
 @Controller
 @RequestMapping("/admin")
 @CrossOrigin("*")
+@Api(tags = {"회원관리"})
 public class AdminUserController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminUserController.class);
@@ -39,6 +47,8 @@ public class AdminUserController {
 	}
 	
 	@ResponseBody
+	@ApiOperation(value = "회원목록", notes="회원의 전체 목록을 반환합니다.?")
+	@ApiResponses({@ApiResponse(code = 200, message="회원목록 OK"), @ApiResponse(code = 500, message="DB오류")})
 	@RequestMapping(value = "/user", method = RequestMethod.GET, headers = { "Content-type=application/json" })
 	public List<MemberDto> userList() throws Exception {
 		List<MemberDto> list = memberService.listMember(null);
@@ -54,6 +64,10 @@ public class AdminUserController {
 		return memberService.listMember(null);
 	}
 
+	
+	@ApiOperation(value = "회원정보", notes="회원 한명<b>정보</b>를 리턴합니다..?")
+	@ApiResponses({@ApiResponse(code = 200, message="회원목록 OK"), @ApiResponse(code = 500, message="DB오류")})
+	@ApiImplicitParams({@ApiImplicitParam(name="userid", value="검색 아이디", required = true, dataType = "String",paramType="path")})
 	@RequestMapping(value = "/user/{userid}", method = RequestMethod.GET, headers = { "Content-type=application/json" })
 	public MemberDto userInfo(@PathVariable("userid") String userid) throws Exception {
 		return memberService.getMember(userid);

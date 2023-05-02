@@ -1,11 +1,20 @@
 package com.ssafy.member.model;
 
-public class MemberDto {
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(value="MemberDto (회원정보)", description="회원 한명의 어쩌구 저쩌구")
+public class MemberDto {
+	
+	@ApiModelProperty(value = "아이디")
 	private String userId;
+	@ApiModelProperty(value = "이름")
 	private String userName;
+	@ApiModelProperty(value = "비번")
 	private String userPwd;
+	@ApiModelProperty(value = "이메일")
 	private String emailId;
+	@ApiModelProperty(value = "어쩌구")
 	private String emailDomain;
 	private String joinDate;
 
