@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-on == @ -->
+        <button v-on:click="plusCount()">plus</button>
+        <button @click="minusCount">minus</button>
+        <h1>{{count}}</h1>
+    </div>
+
+
+    <script>
+        // el(element : 화면 어디에 출력?), data(vue에서 내부적으로 사용할 내용) => 반드시 객체를 반환
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    count:0,
+                }
+            },
+            methods:{
+                plusCount() {
+                    this.count++;
+                    console.log('plus')
+                },
+                minusCount() {
+                    this.count--;
+                    console.log('마이너스')
+                }
+            },  
+        })
+
+
+    </script>
+</body>
+</html>

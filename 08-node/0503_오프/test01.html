@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- {{}} 텍스트 보관법-->
+    <div id="app"> {{message}}</div>
+    <div id="app2">
+        <div>Vue를 만든 사람 : {{name}}</div>
+        <div>Vue를 만든 사람 나이 : {{age}}</div>
+
+    </div>
+    <script>
+        // el(element : 화면 어디에 출력?), data(vue에서 내부적으로 사용할 내용) => 반드시 객체를 반환
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                message: '안녕하세요 Vue!',
+                name : "형준",
+                age : 29
+                }
+            }
+        })
+
+        new Vue({
+            el: '#app2',
+            data: {
+                return {
+                message: '안녕하세요 Vue!',
+                name : "형준",
+                age : 29
+                }
+            }    
+        })
+
+    </script>
+</body>
+</html>

@@ -31,58 +31,58 @@
 
 // Arrow Function에서는 this가 바인딩 되지 않음.
 
-function func1() { 
-    return 100;
-}
-let result = func1();
-console.log(result);
+// function func1() { 
+//     return 100;
+// }
+// let result = func1();
+// console.log(result);
 
-const func2 = () => { return 200 };
-result = func2();
-console.log(result);
-
-
-
-const func3 = x => { return x+100 };
-result = func3(20);
-console.log(result);
+// const func2 = () => { return 200 };
+// result = func2();
+// console.log(result);
 
 
 
-const func4 = (x,y) => { return x+100+y };
-result = func4(10,1);
-console.log(result);
+// const func3 = x => { return x+100 };
+// result = func3(20);
+// console.log(result);
 
 
-const func5 = x => x+999
-result = func5(20);
-console.log(result);
 
-function func7() { 
-    return {
-        id: "ssafy",
-        name:"형준"
-    }
-}
+// const func4 = (x,y) => { return x+100+y };
+// result = func4(10,1);
+// console.log(result);
 
-let user = func7();
-console.log(user);
+
+// const func5 = x => x+999
+// result = func5(20);
+// console.log(result);
+
+// function func7() { 
+//     return {
+//         id: "ssafy",
+//         name:"형준"
+//     }
+// }
+
+// let user = func7();
+// console.log(user);
 
 let fucn8 = () => ({ id: "ssafy", name: "형준" })
 user = func8();
 console.log(user.id);
 
 
-const id = "ssafy"
-const name = "형준"
-const age = 32
-const user2 = {
-    id,
-    name,
-    age,
-    info() => { 
-        console.log(this.name + "(" + this.id + ") 나이 : " +this.age)
+    const id = "ssafy"
+    const name = "형준"
+    const age = 32
+    const user2 = {
+        id,
+        name,
+        age,
+        info() { 
+            console.log(this.name + "(" + this.id + ") 나이 : " +this.age)
+        }
     }
-}
-console.log(user2)
-user2.info()
+    console.log(user2)
+    user2.info()

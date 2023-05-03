@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div><input type="text" v-model="id" /></div>
+        <div><input type="password" v-model="pw" /></div>
+        <button @click="login">로그인</button>
+    </div>
+    
+    <script>
+        // el(element : 화면 어디에 출력?), data(vue에  서 내부적으로 사용할 내용) => 반드시 객체를 반환
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    msg: '',
+                    id:"",
+                    pw:""
+                }
+                
+            }
+            ,methods:{
+                login(){
+                    fetch('/user/login',{
+                        method:"POST",
+                        body:{
+                           
+                        }
+                    })
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

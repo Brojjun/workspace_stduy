@@ -40,7 +40,7 @@ const u3 = { ...u1, ...u2 };
 console.log(u3)
 
 
-const num = [1, 3, 5];
+const num = [1, 322, 5,,111,1122,332323];
 function plus(a, b, c) {
     return a + b + c;
 }
