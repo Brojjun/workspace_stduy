@@ -1,0 +1,3 @@
+[2m2023-05-11 16:28:08.091[0;39m [32m INFO[0;39m [35m19392[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat initialized with port(s): 9999 (http)
+[2m2023-05-11 16:28:08.178[0;39m [32m INFO[0;39m [35m19392[0;39m [2m---[0;39m [2m[           main][0;39m [36mw.s.c.ServletWebServerApplicationContext[0;39m [2m:[0;39m Root WebApplicationContext: initialization completed in 848 ms
+[2m2023-05-11 16:28:08.759[0;39m [32m INFO[0;39m [35m19392[0;39m [2m---[0;39m [2m[           main][0;39m [36mo.s.b.w.embedded.tomcat.TomcatWebServer [0;39m [2m:[0;39m Tomcat started on port(s): 9999 (http) with context path '/vue'

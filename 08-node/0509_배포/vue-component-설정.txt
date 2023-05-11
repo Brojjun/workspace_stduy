@@ -1,0 +1,15 @@
+	"Generate Basic Vue Code": {
+		"prefix": "vue-component",
+		"body": [
+			"<template>\n\t<div></div>\n</template>\n\n<script>\nexport default {\n\tname: '',\n\tcomponents: {},\n\tdata() {\n\t\treturn {\n\t\t\tmessage: '',\n\t\t};\n\t},\n\tcreated() {},\n\tmethods: {},\n};\n</script>\n\n<style scoped></style>"
+		],
+		"description": "Generate Basic Vue Code"
+	},
+
+	"Generate Basic Vue3 Code": {
+		"prefix": "vue3-component",
+		"body": [
+			"<template>\n\t<div></div>\n</template>\n\n<script>\nexport default {\n\tcomponents: {},\n\tdata() {\n\t\treturn {\n\t\t\tmessage: '',\n\t\t};\n\t},\n\tsetup() {},\n\tcreated() {},\n\tmethods: {},\n};\n</script>\n\n<style scoped></style>"
+		],
+		"description": "Generate Basic Vue3 Code"
+	}
