@@ -34,7 +34,8 @@ export default {
     };
   },
   created() {
-    console.dir(this.$route.params.no);
+    console.dir(
+      "http://localhost/api/notice/info/"+this.$route.params.no);
     axios.get("http://localhost/api/notice/info/"+this.$route.params.no)
     .then(response=>{
       console.dir(response.data);
